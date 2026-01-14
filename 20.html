@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OSI-modellen – Oversikt</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      background-color: #f8f9fa;
+      color: #222;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 40px;
+    }
+
+    th, td {
+      border: 1px solid #555;
+      padding: 10px;
+      vertical-align: top;
+    }
+
+    th {
+      background-color: #e2e3e5;
+      text-align: left;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f4f4f4;
+    }
+
+    .header-table th {
+      background-color: #cfd2d4;
+    }
+
+    caption {
+      font-weight: bold;
+      margin-bottom: 10px;
+      font-size: 1.2em;
+    }
+  </style>
+</head>
+<body>
+  <h1>OSI-modellen – Komplett oversikt</h1>
+
+  <table>
+    <tr>
+      <th>OSI-lag</th>
+      <th>Jobb</th>
+      <th>Dataenhet</th>
+      <th>Adressering</th>
+      <th>Protokoller</th>
+      <th>Hardware</th>
+      <th>Teknologier</th>
+    </tr>
+
+    <tr>
+      <td><b>7. Applikasjonslaget</b></td>
+      <td>Gir tjenester direkte til brukerapplikasjoner (nettleser, e-post, osv.) og sørger for at data kan sendes og mottas på en meningsfull måte.</td>
+      <td>Data</td>
+      <td>Ingen spesifikk adressering – bruker applikasjonsnavn eller URL.</td>
+      <td>HTTP, HTTPS, FTP, SMTP, POP3, IMAP, DNS, DHCP</td>
+      <td>Datamaskin, server, mobil, nettleser</td>
+      <td>Web-tjenester, e-post, fjerninnlogging (SSH), API-er</td>
+    </tr>
+
+    <tr>
+      <td><b>6. Presentasjonslaget</b></td>
+      <td>Oversetter, krypterer og komprimerer data slik at applikasjonslaget forstår det. Sikrer riktig format mellom avsender og mottaker.</td>
+      <td>Data</td>
+      <td>Ingen</td>
+      <td>SSL/TLS, JPEG, MPEG, ASCII, GIF</td>
+      <td>Server, datamaskin, applikasjonsprogramvare</td>
+      <td>Kryptering (TLS/SSL), datakomprimering, formatkonvertering</td>
+    </tr>
+
+    <tr>
+      <td><b>5. Sesjonslaget</b></td>
+      <td>Etablerer, styrer og avslutter kommunikasjonssessioner mellom applikasjoner. Håndterer dialogkontroll og synkronisering.</td>
+      <td>Data</td>
+      <td>Ingen</td>
+      <td>RPC, NetBIOS, PPTP</td>
+      <td>Server, applikasjonsprogramvare</td>
+      <td>Fjernpålogging, filoverføring, videochat</td>
+    </tr>
+
+    <tr>
+      <td><b>4. Transportlaget</b></td>
+      <td>Sørger for pålitelig (eller upålitelig) overføring av data mellom endepunkter. Deler opp data i segmenter og gjenoppretter dem ved mottak.</td>
+      <td>Segment (TCP) / Datagram (UDP)</td>
+      <td>Portnummer</td>
+      <td>TCP, UDP</td>
+      <td>Gateway, nettverkskort</td>
+      <td>Streaming, nettspill, webtrafikk, e-post</td>
+    </tr>
+
+    <tr>
+      <td><b>3. Nettverkslaget</b></td>
+      <td>Ruter datapakker gjennom nettverket og bestemmer den beste veien fra avsender til mottaker.</td>
+      <td>Pakke</td>
+      <td>IP-adresse</td>
+      <td>IP, ICMP, ARP, RIP, OSPF</td>
+      <td>Router, Layer 3-switch</td>
+      <td>IPv4, IPv6, NAT, rutingprotokoller</td>
+    </tr>
+
+    <tr>
+      <td><b>2. Datalink-laget</b></td>
+      <td>Sørger for feildeteksjon og -korreksjon på det lokale nettverket. Overfører rammer (frames) mellom noder på samme fysiske nettverk.</td>
+      <td>Ramme (Frame)</td>
+      <td>MAC-adresse</td>
+      <td>Ethernet, PPP, ARP, VLAN (802.1Q)</td>
+      <td>Switch, nettverkskort (NIC), bridge</td>
+      <td>Wi-Fi (802.11), Ethernet (802.3), Bluetooth</td>
+    </tr>
+
+    <tr>
+      <td><b>1. Fysiske laget</b></td>
+      <td>Overfører rå bits som elektriske, optiske eller radiobølger. Definerer kabler, signalstyrke og standarder for fysisk tilkobling.</td>
+      <td>Bit</td>
+      <td>Ingen</td>
+      <td>Ethernet (fysisk), DSL, ISDN</td>
+      <td>Kabler, hub, repeater, modem, nettverkskort</td>
+      <td>Fiberoptikk, koaksialkabel, UTP, 4G/5G</td>
+    </tr>
+  </table>
+
+  <table class="header-table">
+    <caption>Viktige protokoll-headere</caption>
+    <tr>
+      <th>Protokoll</th>
+      <th>Viktige felt i headeren</th>
+    </tr>
+    <tr>
+      <td><b>Ethernet-header</b></td>
+      <td>
+        <ul>
+          <li>Destination MAC-adresse</li>
+          <li>Source MAC-adresse</li>
+          <li>Type (identifiserer neste protokoll, f.eks. IPv4 = 0x0800)</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><b>IP-pakke (IPv4)</b></td>
+      <td>
+        <ul>
+          <li>Versjon (IPv4/IPv6)</li>
+          <li>Header Length</li>
+          <li>Time To Live (TTL)</li>
+          <li>Protocol (f.eks. TCP=6, UDP=17)</li>
+          <li>Source IP / Destination IP</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><b>TCP-segment</b></td>
+      <td>
+        <ul>
+          <li>Source Port / Destination Port</li>
+          <li>Sequence Number / Acknowledgment Number</li>
+          <li>Flags (SYN, ACK, FIN, RST)</li>
+          <li>Checksum</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><b>UDP-segment</b></td>
+      <td>
+        <ul>
+          <li>Source Port / Destination Port</li>
+          <li>Length</li>
+          <li>Checksum</li>
+        </ul>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

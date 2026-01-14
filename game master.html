@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Master Guide - World Where I Am Unwelcome</title>
+    <style>
+        body {
+            background-color: #1a1a1a;
+            color: #d4c4a1;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #ffd700;
+            text-shadow: 2px 2px 4px #000;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 1.8em;
+        }
+
+        h3 {
+            font-size: 1.4em;
+        }
+
+        .gm-guide {
+            width: 90%;
+            max-width: 1200px;
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid #4a3c2b;
+            border-radius: 8px;
+            padding: 20px;
+            color: #d4c4a1;
+        }
+
+        .gm-guide p, .gm-guide ul {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .gm-guide table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .gm-guide th, .gm-guide td {
+            padding: 10px;
+            border: 1px solid #4a3c2b;
+            text-align: left;
+        }
+
+        .gm-guide th {
+            background: #4a3c2b;
+            color: #ffd700;
+            font-weight: bold;
+        }
+
+        .gm-guide td {
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .gm-guide tr:nth-child(even) td {
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        .nav-links {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .nav-links a {
+            color: #ffd700;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 16px;
+        }
+
+        .nav-links a:hover {
+            color: #ff4500;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #d4c4a1;
+            text-shadow: 1px 1px 2px #000;
+        }
+
+        @media (max-width: 600px) {
+            .gm-guide table {
+                font-size: 12px;
+            }
+
+            .gm-guide th, .gm-guide td {
+                padding: 6px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            h3 {
+                font-size: 1.2em;
+            }
+
+            .nav-links a {
+                font-size: 14px;
+                margin: 0 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Game Master Guide: World Where I Am Unwelcome</h1>
+
+    <div class="nav-links">
+        <a href="#page1">Overview</a> |
+        <a href="#page2">Locations</a> |
+        <a href="#page3">Characters</a> |
+        <a href="#page4">Monsters</a> |
+        <a href="#page5">GM Tips</a>
+    </div>
+
+    <div class="gm-guide">
+        <!-- Page 1: Overview and Campaign Flow -->
+        <div id="page1">
+            <h2>Page 1: Campaign Overview and Flow</h2>
+            <h3>Campaign Summary</h3>
+            <p>"World Where I Am Unwelcome" is a dark fantasy campaign set in the realm of Eyloria, a land torn between the forsaken god Ksavir and the oppressive Light of Torval and Elyria. The players, known as the Antiheroes, are guided by Ysmera, Last Daughter, to awaken Ksavir and overthrow the tyrannical rule of Mortimer II, who wields the reality-warping Mirror of Worlds in Avalon. The journey takes them from the desolate southwest (Misty Forest) to the gleaming northeast (Avalon), facing zealous followers, corrupted lands, and reality-bending threats.</p>
+
+            <h3>Journey Progression</h3>
+            <table>
+                <tr>
+                    <th>Order</th>
+                    <th>Location</th>
+                    <th>Key Challenge</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Misty Forest</td>
+                    <td>Learn of Ksavir’s tomb and gain Ysmera’s guidance while surviving Mist Wraiths.</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Alder Hamlet</td>
+                    <td>Navigate Torval’s oppression and Father Gideon’s scrutiny; fend off Grave Shadows.</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Cursed Forest</td>
+                    <td>Deal with Baba Yaga and survive the Corrupted Treants in a disorienting forest.</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Swamps of Despair</td>
+                    <td>Face Kaelith’s wrath and navigate treacherous terrain while avoiding Swamp Serpents.</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Lightfort</td>
+                    <td>Infiltrate Elyria’s bastion, confront Sister Lirien, and disable Zealot Constructs.</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>Valley of Illusions</td>
+                    <td>Discern reality from illusion, deal with Thryme, and defeat Illusionary Phantoms.</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>Mountains of Madness</td>
+                    <td>Survive the chaotic environment, defeat Zarath, and claim a Mirror shard.</td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>Creststone City</td>
+                    <td>Sneak through Torval’s stronghold, stop Veyra’s ritual, and defeat Necrotic Guardians.</td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>Avalon</td>
+                    <td>Confront Mortimer II, destroy the Mirror of Worlds, and survive Mirror Sentinels.</td>
+                </tr>
+            </table>
+
+            <h3>Overarching GM Tips</h3>
+            <ul>
+                <li><strong>Tone:</strong> Maintain a dark, oppressive atmosphere. Use vivid descriptions of decay, zealotry, and warped reality to unsettle players.</li>
+                <li><strong>Pacing:</strong> Balance combat, exploration, and roleplay. Each location should take 1-2 sessions, with Avalon as the climactic finale.</li>
+                <li><strong>Player Agency:</strong> Let players choose how to approach challenges (e.g., diplomacy with NPCs, stealth, or combat), but ensure consequences for their actions.</li>
+                <li><strong>Foreshadowing:</strong> Drop hints about the Mirror of Worlds early (e.g., Ysmera’s prophecies, Thryme’s visions) to build anticipation for the final confrontation.</li>
+            </ul>
+        </div>
+
+        <!-- Page 2: Locations -->
+        <div id="page2">
+            <h2>Page 2: Locations</h2>
+            <table>
+                <tr>
+                    <th>Location</th>
+                    <th>Description</th>
+                    <th>Environmental Effects</th>
+                    <th>GM Notes</th>
+                </tr>
+                <tr>
+                    <td>Misty Forest</td>
+                    <td>The southwestern edge of Eyloria, where Ksavir’s body lies entombed in eternal mist. A dark, dense forest filled with whispers of the forsaken.</td>
+                    <td>Thick mist reduces visibility to 20 ft. Whispers impose disadvantage on Wisdom (Perception) checks unless players succeed on a DC 14 Wisdom save.</td>
+                    <td>Use eerie sound effects (whispers, distant wails). The forest feels alive and hostile. Ksavir’s tomb is a focal point—disturbing it triggers Mist Wraith attacks.</td>
+                </tr>
+                <tr>
+                    <td>Alder Hamlet</td>
+                    <td>A small village built on the graves of Ksavir’s army, under Torval’s oppressive watch. The villagers are paranoid and fearful.</td>
+                    <td>At night, the temperature drops (Constitution DC 12 or suffer 1 level of exhaustion). Grave Shadows rise after dusk.</td>
+                    <td>Create tension through social encounters. Villagers may betray PCs to Father Gideon. Highlight the contrast between the quaint village and its dark underbelly.</td>
+                </tr>
+                <tr>
+                    <td>Cursed Forest</td>
+                    <td>A twisted woodland where Morana’s dark magic lingers, corrupting all life. Trees bleed black sap, and the air is sickly sweet.</td>
+                    <td>Disorienting magic (Survival DC 16 to navigate). The air causes mild poisoning (Constitution DC 14 or take 1d6 poison damage per hour).</td>
+                    <td>Emphasize the unnatural—bleeding trees, warped animals. Baba Yaga’s hut moves unpredictably (Perception DC 18 to track). Use vivid, unsettling descriptions.</td>
+                </tr>
+                <tr>
+                    <td>Swamps of Despair</td>
+                    <td>A desolate marsh born of Elyria’s tears and Ksavir’s blood, where hope drowns in sorrow. The ground is treacherous and muddy.</td>
+                    <td>Difficult terrain (half movement speed). Despair aura (Charisma DC 15 or disadvantage on Charisma checks while in the swamp).</td>
+                    <td>Use oppressive atmosphere—constant drizzle, distant cries. Kaelith appears at dusk, targeting the most charismatic PC. The swamp feels like it’s draining the PCs’ will.</td>
+                </tr>
+                <tr>
+                    <td>Lightfort</td>
+                    <td>Elyria’s bastion, a fortress of light corrupted by zealotry. Golden walls hide a fanatical populace.</td>
+                    <td>Bright light imposes disadvantage on Stealth checks. Zealot Constructs patrol, requiring Stealth DC 20 to avoid detection.</td>
+                    <td>Highlight the contrast between beauty and oppression—gleaming walls, but public floggings. Sister Lirien interrogates PCs; failure (Persuasion DC 18) leads to combat.</td>
+                </tr>
+                <tr>
+                    <td>Valley of Illusions</td>
+                    <td>A mystical rift bleeding from the Mirror’s power, where reality bends and mirages deceive. The air shimmers with illusions.</td>
+                    <td>Illusions require Perception DC 18 to discern reality. Failing a check causes psychic damage (2d6) from mental strain.</td>
+                    <td>Use surreal descriptions—shifting landscapes, mirrored PCs. Thryme’s reversed speech adds confusion. Phantoms attack in waves, exploiting the illusions.</td>
+                </tr>
+                <tr>
+                    <td>Mountains of Madness</td>
+                    <td>Zarkan’s tomb, a chaotic range of jagged peaks where madness seeps from the earth. The air hums with chaotic energy.</td>
+                    <td>Chaotic energy (Wisdom DC 16 or suffer short-term madness per hour). Unstable terrain (Dexterity DC 14 to avoid falling, 2d6 bludgeoning damage).</td>
+                    <td>Use chaotic effects—sudden storms, gravity shifts. Zarath guards a Mirror shard, which PCs need. The environment should feel hostile and unpredictable.</td>
+                </tr>
+                <tr>
+                    <td>Creststone City</td>
+                    <td>Torval’s stronghold, a grand city of light and oppression. Streets are lined with statues of Torval, and the faithful rule with an iron fist.</td>
+                    <td>High alert (Stealth DC 20 to avoid patrols). Public areas are crowded, imposing disadvantage on Dexterity (Stealth) checks.</td>
+                    <td>Emphasize oppression—public executions, chanting crowds. Veyra performs a ritual in the city square; interrupting it angers her. Necrotic Guardians are everywhere.</td>
+                </tr>
+                <tr>
+                    <td>Avalon</td>
+                    <td>The northeastern capital, seat of Mortimer II, where the Mirror of Worlds shapes reality. A gleaming metropolis with a dark heart.</td>
+                    <td>Reality shifts (Investigation DC 20 to notice). The Mirror’s presence causes random magical effects (DMG Wild Magic table, 1/hour).</td>
+                    <td>Use epic descriptions for the finale—towering spires, warped reality. Mortimer II resides in the central palace. Destroying the Mirror requires a ritual (Arcana DC 22).</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Page 3: Characters -->
+        <div id="page3">
+            <h2>Page 3: Characters</h2>
+            <table>
+                <tr>
+                    <th>Character</th>
+                    <th>Location</th>
+                    <th>Level & Class</th>
+                    <th>Skills/Abilities</th>
+                    <th>Personality & Roleplay</th>
+                    <th>GM Notes</th>
+                </tr>
+                <tr>
+                    <td>Ysmera, Last Daughter</td>
+                    <td>Misty Forest</td>
+                    <td>Level 10 Ghost (Custom)</td>
+                    <td>AC 14, HP 80, Ethereal Sight, Possession (DC 15 Wisdom save), Prophetic Visions (can reveal cryptic clues about the journey).</td>
+                    <td>Ethereal and mournful, speaks in riddles. She’s bound to Ksavir and desperate to awaken him, but fears failure.</td>
+                    <td>Ysmera guides the PCs but is unreliable—her prophecies are vague. Roleplay her as distant, with a haunting voice. She’ll push PCs toward Ksavir’s tomb but flee if attacked.</td>
+                </tr>
+                <tr>
+                    <td>Father Gideon</td>
+                    <td>Alder Hamlet</td>
+                    <td>Level 8 Cleric</td>
+                    <td>AC 16 (plate), HP 60, Spells: Spiritual Weapon, Guiding Bolt, Hold Person (DC 15), Mace (+6 to hit, 1d8+3 bludgeoning).</td>
+                    <td>Zealous and paranoid, sees heresy everywhere. He’s stern, with a booming voice, and quick to judge.</td>
+                    <td>Gideon interrogates PCs about their faith (Insight DC 16 to detect lies). He’ll attack if they mention Ksavir. Use him to create tension—his presence should feel oppressive.</td>
+                </tr>
+                <tr>
+                    <td>Baba Yaga</td>
+                    <td>Cursed Forest</td>
+                    <td>Level 12 Spellcaster (Hag)</td>
+                    <td>AC 15, HP 110, Spells: Polymorph, Curse (DC 16 Wisdom save, -2 to all saves for 1 week), Counterspell, Walking Hut (moves 60 ft/round).</td>
+                    <td>Cunning and cruel, with a cackling laugh. She loves bargains but always twists them to her advantage.</td>
+                    <td>Offer dangerous deals (e.g., power for a PC’s memory). If PCs refuse, she curses them and flees in her hut. Roleplay her as manipulative—use her to test PC greed.</td>
+                </tr>
+                <tr>
+                    <td>Kaelith, Ashen Wraith</td>
+                    <td>Swamps of Despair</td>
+                    <td>Level 10 Banshee</td>
+                    <td>AC 14, HP 90, Wail (DC 15 Constitution save or drop to 0 HP), Incorporeal Movement, Draining Touch (+7 to hit, 3d6 necrotic).</td>
+                    <td>Vengeful and sorrowful, her voice is a haunting wail. She seeks retribution against the living, blaming them for her fate.</td>
+                    <td>Kaelith targets the PC with the highest Charisma, appearing at dusk. Her wail is her opening move—use it to create panic. Describe her as a pale, ashen figure with glowing eyes.</td>
+                </tr>
+                <tr>
+                    <td>Sister Lirien, Blinded Saint</td>
+                    <td>Lightfort</td>
+                    <td>Level 10 Paladin</td>
+                    <td>AC 18 (plate + shield), HP 85, Spells: Searing Smite, Zone of Truth (DC 16), Divine Smite (+3d8 radiant), Immune to fear.</td>
+                    <td>Fanatical and self-righteous, blind but senses “darkness” (Blindsight 60 ft). She speaks with fervent conviction.</td>
+                    <td>Lirien interrogates PCs (Persuasion DC 18 to avoid combat). She fights with zeal, using Divine Smite on “heretics.” Roleplay her as unyielding—her faith is her strength and weakness.</td>
+                </tr>
+                <tr>
+                    <td>Thryme, Backward Prophet</td>
+                    <td>Valley of Illusions</td>
+                    <td>Level 8 Diviner</td>
+                    <td>AC 13 (robes), HP 50, Spells: Mislead, Hallucinatory Terrain, Detect Thoughts (DC 15), Portent (2 dice/day).</td>
+                    <td>Confused and erratic, speaks in reversed sentences (e.g., “Future the see I”). He’s lost in time, seeing past as future.</td>
+                    <td>Thryme gives cryptic clues about the Mirror but is unreliable. Use his spells to confuse PCs (e.g., Mislead to create duplicates). His reversed speech should frustrate but intrigue players.</td>
+                </tr>
+                <tr>
+                    <td>Zarath, Shard Keeper</td>
+                    <td>Mountains of Madness</td>
+                    <td>Level 12 Sorcerer (Wild Magic)</td>
+                    <td>AC 15 (mage armor), HP 90, Spells: Confusion, Fireball, Chaos Bolt (DC 16), Wild Magic Surge (roll on table each spell cast).</td>
+                    <td>Mad and paranoid, rants about “the shard’s whispers.” His speech is disjointed, and his actions are unpredictable.</td>
+                    <td>Zarath guards a Mirror shard—PCs must defeat him to claim it. His Wild Magic makes combat chaotic (e.g., accidental Polymorph). Roleplay his madness vividly—laughing, screaming, muttering.</td>
+                </tr>
+                <tr>
+                    <td>Veyra, Bone Singer</td>
+                    <td>Creststone City</td>
+                    <td>Level 11 Bard/Necromancer</td>
+                    <td>AC 14, HP 80, Spells: Animate Dead (summons 4 skeletons), Fear, Dissonant Whispers (DC 16), Song of Decay (+7 to hit, 3d6 necrotic).</td>
+                    <td>Cold and calculating, with a haunting voice. She serves Torval but craves power, using necromancy to control the city.</td>
+                    <td>Veyra performs a ritual—interrupting it angers her (summons skeletons immediately). Use her songs to unnerve PCs (e.g., Song of Decay). Roleplay her as a charismatic but sinister leader.</td>
+                </tr>
+                <tr>
+                    <td>Mortimer II</td>
+                    <td>Avalon</td>
+                    <td>Level 15 Wizard</td>
+                    <td>AC 16 (shield spell), HP 120, Spells: Time Stop, Mirage Arcane, Disintegrate (DC 18), Mirror of Worlds (can warp reality, e.g., teleport 60 ft as a bonus action).</td>
+                    <td>Arrogant and commanding, believes he’s untouchable. His voice is calm but authoritative, with a hint of disdain.</td>
+                    <td>Mortimer II is the final boss—use Time Stop to set up devastating combos (e.g., Disintegrate). He taunts PCs, mocking their quest. The Mirror must be destroyed (Arcana DC 22 ritual).</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Page 4: Monsters -->
+        <div id="page4">
+            <h2>Page 4: Monsters</h2>
+            <table>
+                <tr>
+                    <th>Monster</th>
+                    <th>Location</th>
+                    <th>Stats</th>
+                    <th>Abilities</th>
+                    <th>Tactics</th>
+                    <th>GM Notes</th>
+                </tr>
+                <tr>
+                    <td>Mist Wraiths</td>
+                    <td>Misty Forest</td>
+                    <td>AC 13, HP 45, Speed 0 ft, fly 60 ft (hover).</td>
+                    <td>Incorporeal Movement, Psychic Drain (+5 to hit, 3d6 psychic), Possession (DC 14 Wisdom save, one target).</td>
+                    <td>Ambush in groups (2-4), using the mist for cover. Target low-Wisdom PCs with Possession, then drain others.</td>
+                    <td>Describe their whispers as maddening—PCs hear their fears. They attack if Ksavir’s tomb is disturbed. Use them to create a spooky opener.</td>
+                </tr>
+                <tr>
+                    <td>Grave Shadows</td>
+                    <td>Alder Hamlet</td>
+                    <td>AC 14, HP 50, Speed 40 ft, Stealth +5.</td>
+                    <td>Shadow Stealth (advantage on Stealth in dim light), Necrotic Slash (+6 to hit, 2d6 necrotic), Reforms unless killed with radiant damage.</td>
+                    <td>Strike at night (1d4+2 per encounter), using Shadow Stealth to ambush. Focus on isolated PCs.</td>
+                    <td>They rise from graves—describe the ground cracking open. Use them to make nights in the hamlet dangerous, forcing PCs to plan their rest.</td>
+                </tr>
+                <tr>
+                    <td>Corrupted Treants</td>
+                    <td>Cursed Forest</td>
+                    <td>AC 16, HP 120, Speed 30 ft.</td>
+                    <td>Slam (+8 to hit, 3d6 bludgeoning), Entangle (DC 15 Strength save, restrained), Resistance to bludgeoning/piercing.</td>
+                    <td>Attack in groups (2-3), using Entangle to immobilize, then Slam. They target the nearest PC.</td>
+                    <td>Describe their twisted forms—black sap dripping, branches like claws. They’re relentless—use them to make the forest feel alive and hostile.</td>
+                </tr>
+                <tr>
+                    <td>Swamp Serpents</td>
+                    <td>Swamps of Despair</td>
+                    <td>AC 15, HP 40, Speed 30 ft, swim 40 ft.</td>
+                    <td>Bite (+6 to hit, 1d8 piercing + 2d6 poison, DC 14 Constitution save for half), Constrict (+6 to hit, 2d6 bludgeoning, DC 14 Strength save).</td>
+                    <td>Ambush in packs (2d4), hiding in water (Stealth +6). Bite first, then Constrict restrained targets.</td>
+                    <td>Describe the water rippling before they strike. They’re opportunistic—target PCs who fall behind. Use them to make the swamp feel treacherous.</td>
+                </tr>
+                <tr>
+                    <td>Zealot Constructs</td>
+                    <td>Lightfort</td>
+                    <td>AC 17, HP 80, Speed 30 ft.</td>
+                    <td>Radiant Strike (+7 to hit, 2d8 radiant), Explosive Collapse (on death, DC 14 Dexterity save, 3d6 fire damage), Resistance to non-magical damage.</td>
+                    <td>Patrol in pairs, attacking “heretics” on sight. Use Radiant Strike, then explode when destroyed.</td>
+                    <td>Describe them as glowing statues with lifeless eyes. They’re relentless—use them to make infiltration tense. Their explosion can catch PCs off guard.</td>
+                </tr>
+                <tr>
+                    <td>Illusionary Phantoms</td>
+                    <td>Valley of Illusions</td>
+                    <td>AC 12, HP 60, Speed 0 ft, fly 50 ft.</td>
+                    <td>Psychic Assault (+6 to hit, 3d6 psychic), Immune to physical damage, Disbelieve (Investigation DC 16 to banish).</td>
+                    <td>Attack in waves (1d6 per encounter), using illusions to confuse (e.g., fake duplicates). Target low-Intelligence PCs.</td>
+                    <td>Describe them as shimmering mirages of the PCs’ fears. Use illusions to disorient—e.g., fake cliffs, enemies. PCs must outsmart them, not just fight.</td>
+                </tr>
+                <tr>
+                    <td>Chaos Beasts</td>
+                    <td>Mountains of Madness</td>
+                    <td>AC 16, HP 90, Speed 40 ft.</td>
+                    <td>Elemental Claw (+7 to hit, 3d8 damage, 1d4: fire, ice, lightning, acid), Regenerate 10 HP/round, Chaotic Aura (DC 14 Wisdom save or frightened).</td>
+                    <td>Roam in packs (1d4+1), using Chaotic Aura to scatter PCs, then Elemental Claw. Focus on weakened targets.</td>
+                    <td>Describe their shifting forms—claws of fire, eyes of ice. Their randomness makes combat unpredictable. Use them to amplify the mountains’ chaos.</td>
+                </tr>
+                <tr>
+                    <td>Necrotic Guardians</td>
+                    <td>Creststone City</td>
+                    <td>AC 15, HP 70, Speed 30 ft.</td>
+                    <td>Slashing Blade (+6 to hit, 2d6 slashing), Fear Aura (DC 14 Wisdom save, 30 ft radius), Resistance to necrotic damage.</td>
+                    <td>Patrol in groups of 3, using Fear Aura to disrupt, then Slashing Blade. Target spellcasters first.</td>
+                    <td>Describe them as skeletal warriors with glowing eyes. Use their Fear Aura to create panic—PCs may flee into more danger. They’re Veyra’s enforcers.</td>
+                </tr>
+                <tr>
+                    <td>Mirror Sentinels</td>
+                    <td>Avalon</td>
+                    <td>AC 18, HP 100, Speed 40 ft.</td>
+                    <td>Force Strike (+8 to hit, 3d10 force), Spell Reflection (50% chance to reflect targeted spells), Mirror Warp (teleport 30 ft as bonus action).</td>
+                    <td>Guard Mortimer II (2d4 in the palace), using Mirror Warp to flank, then Force Strike. Reflect spells to punish casters.</td>
+                    <td>Describe them as crystalline beings with reflective surfaces. Their Spell Reflection makes magic risky—encourage creative tactics. They’re the final gauntlet.</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Page 5: Additional GM Tips -->
+        <div id="page5">
+            <h2>Page 5: Additional GM Tips</h2>
+            <h3>Pacing the Campaign</h3>
+            <ul>
+                <li>Each location should take 1-2 sessions, depending on player choices. Allow time for exploration and roleplay, but keep combat encounters frequent to maintain tension.</li>
+                <li>Use travel between locations to introduce minor encounters (e.g., a lone Grave Shadow, a wandering Chaos Beast) or environmental challenges (e.g., crossing a river, navigating a storm).</li>
+                <li>Build toward the finale in Avalon—escalate the stakes with each location (e.g., the Mirror’s effects grow stronger as PCs approach).</li>
+            </ul>
+
+            <h3>Creating Atmosphere</h3>
+            <ul>
+                <li><strong>Misty Forest:</strong> Use sound effects—whispers, rustling leaves, distant wails. Describe the mist clinging to the PCs’ skin.</li>
+                <li><strong>Swamps of Despair:</strong> Emphasize the oppressive air—drizzle, the stench of decay, the feeling of being watched.</li>
+                <li><strong>Valley of Illusions:</strong> Describe surreal shifts—trees melting, the ground rippling. Use the PCs’ backstories to craft personal illusions.</li>
+                <li><strong>Avalon:</strong> Contrast beauty with dread—gleaming spires, but the air crackles with warped energy. Reality bends (e.g., NPCs loop conversations).</li>
+            </ul>
+
+            <h3>Handling Player Choices</h3>
+            <ul>
+                <li><strong>Diplomacy:</strong> Allow PCs to negotiate with NPCs like Baba Yaga or Sister Lirien, but ensure consequences (e.g., Baba Yaga’s curses, Lirien’s tests of faith).</li>
+                <li><strong>Stealth:</strong> Reward creative stealth in places like Lightfort and Creststone City, but make failure costly (e.g., triggering alarms, summoning guards).</li>
+                <li><strong>Combat:</strong> Encourage tactical play—e.g., disbelieving Illusionary Phantoms, using radiant damage against Grave Shadows. Punish recklessness with overwhelming odds (e.g., Zealot Constructs’ explosions).</li>
+                <li><strong>Moral Dilemmas:</strong> Present tough choices—e.g., ally with Baba Yaga for power, or destroy the Mirror at the cost of destabilizing Eyloria.</li>
+            </ul>
+
+            <h3>Scaling Difficulty</h3>
+            <ul>
+                <li>For lower-level parties (Levels 5-7), reduce monster HP by 20% and lower save DCs by 2.</li>
+                <li>For higher-level parties (Levels 10+), increase monster numbers (e.g., 3-5 Mist Wraiths instead of 2-4) and add 1-2 environmental hazards per encounter.</li>
+                <li>Mortimer II can be scaled by adding legendary actions (e.g., cast a cantrip, teleport 30 ft) for a tougher finale.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer">
+        Compiled by the Outcasts of Ksavir in the Age of Shadows - Guide the Antiheroes to Vengeance
+    </div>
+</body>
+</html>

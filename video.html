@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WIRAPLAY - Погружение в киновселенную</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        :root {
+            --primary: #ff1a2d;
+            --secondary: #00d4ff;
+            --bg-dark: #1a1a1a;
+            --bg-accent: #2d2d2d;
+            --text-dark: #e0e0e0;
+            --text-muted: #8a8a8a;
+            --glow: 0 0 20px rgba(255, 26, 45, 0.5);
+            --shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+            --transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        body {
+            background: var(--bg-dark);
+            color: var(--text-dark);
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+            perspective: 1000px;
+        }
+
+        #webgl-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(26, 26, 26, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .navbar.hidden {
+            transform: translateY(-100%);
+        }
+
+        .logo {
+            font-size: 36px;
+            font-weight: 900;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            text-shadow: var(--glow);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+            text-shadow: 0 0 30px rgba(255, 26, 45, 0.8);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 50px;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 700;
+            position: relative;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: width 0.4s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .hero.hidden {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            filter: brightness(0.4);
+            transition: var(--transition);
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            padding: 0 20px;
+            z-index: 2;
+        }
+
+        .hero-content h1 {
+            font-size: 100px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 8px;
+            color: var(--text-dark);
+            text-shadow: var(--glow);
+            transition: var(--transition);
+        }
+
+        .hero-content p {
+            font-size: 24px;
+            margin: 30px 0 50px;
+            color: var(--text-muted);
+            transition: var(--transition);
+        }
+
+        .btn {
+            padding: 15px 50px;
+            background: var(--primary);
+            color: var(--text-dark);
+            border: none;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+
+        .btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 50px rgba(255, 26, 45, 0.7);
+        }
+
+        .search-bar {
+            position: absolute;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            max-width: 90%;
+            z-index: 2;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 30px;
+            background: var(--bg-accent);
+            color: var(--text-dark);
+            font-size: 16px;
+            outline: none;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+
+        .search-bar input:focus {
+            transform: scale(1.05);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.9);
+        }
+
+        .matrix-mode {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-dark);
+            z-index: 10;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .matrix-mode.active {
+            display: flex;
+        }
+
+        .matrix-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.5;
+        }
+
+        .matrix-content {
+            text-align: center;
+        }
+
+        .matrix-content h2 {
+            font-size: 80px;
+            font-weight: 900;
+            color: var(--secondary);
+            text-shadow: 0 0 30px rgba(0, 212, 255, 0.7);
+            margin-bottom: 30px;
+        }
+
+        .matrix-content p {
+            font-size: 22px;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+        }
+
+        .matrix-btn {
+            padding: 15px 40px;
+            background: var(--secondary);
+            color: var(--text-dark);
+            border: none;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            margin: 10px;
+            transition: var(--transition);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+        }
+
+        .matrix-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 50px rgba(0, 212, 255, 0.7);
+        }
+
+        .content-section {
+            padding: 120px 80px;
+            background: var(--bg-accent);
+            display: none;
+            transition: var(--transition);
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        .section-title {
+            font-size: 60px;
+            font-weight: 900;
+            color: var(--primary);
+            margin-bottom: 60px;
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            text-shadow: var(--glow);
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .content-card {
+            position: relative;
+            height: 450px;
+            background: var(--bg-dark);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: var(--transition);
+            cursor: pointer;
+            box-shadow: var(--shadow);
+        }
+
+        .content-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9);
+        }
+
+        .content-card img {
+            width: 100%;
+            height: 65%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .content-card:hover img {
+            filter: brightness(1.1);
+        }
+
+        .card-info {
+            padding: 20px;
+        }
+
+        .card-info h3 {
+            font-size: 24px;
+            font-weight: 900;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+
+        .card-info p {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        .card-rating {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--primary);
+            color: var(--text-dark);
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 700;
+            box-shadow: var(--glow);
+        }
+
+        .play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 26, 45, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .content-card:hover .play-btn {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1.2);
+        }
+
+        .play-btn::before {
+            content: '▶';
+            color: var(--text-dark);
+            font-size: 30px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(26, 26, 26, 0.95);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--bg-accent);
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 800px;
+            width: 90%;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 30px;
+            color: var(--text-dark);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .modal-close:hover {
+            color: var(--primary);
+            transform: rotate(90deg);
+        }
+
+        .modal-content h2 {
+            margin-bottom: 30px;
+            color: var(--primary);
+            font-size: 40px;
+            font-weight: 900;
+            text-shadow: var(--glow);
+        }
+
+        .modal-content p {
+            margin-bottom: 40px;
+            color: var(--text-muted);
+            font-size: 18px;
+        }
+
+        .profile-section {
+            padding: 120px 80px;
+            background: var(--bg-accent);
+            display: none;
+            transition: var(--transition);
+        }
+
+        .profile-section.active {
+            display: block;
+        }
+
+        .profile-card {
+            background: var(--bg-dark);
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 500px;
+            margin: 0 auto;
+            box-shadow: var(--shadow);
+        }
+
+        .profile-card h2 {
+            font-size: 40px;
+            color: var(--primary);
+            margin-bottom: 20px;
+            text-shadow: var(--glow);
+        }
+
+        .profile-card p {
+            font-size: 16px;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+        }
+
+        footer {
+            padding: 80px;
+            background: var(--bg-dark);
+            text-align: center;
+            font-size: 16px;
+            color: var(--text-muted);
+            border-top: 2px solid rgba(255, 26, 45, 0.3);
+            display: none;
+            transition: var(--transition);
+        }
+
+        footer.active {
+            display: block;
+        }
+
+        footer a {
+            color: var(--primary);
+            text-decoration: none;
+            margin: 0 20px;
+            transition: var(--transition);
+        }
+
+        footer a:hover {
+            color: var(--secondary);
+            transform: scale(1.1);
+        }
+
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 3000;
+            transition: opacity 1s ease;
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 6px solid var(--primary);
+            border-top: 6px solid var(--secondary);
+            border-radius: 50%;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 20px 40px;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 100%;
+                height: 100%;
+                background: var(--bg-dark);
+                flex-direction: column;
+                padding: 120px 40px;
+                transition: right 0.6s ease;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .hero-content h1 {
+                font-size: 60px;
+            }
+
+            .hero-content p {
+                font-size: 18px;
+            }
+
+            .search-bar {
+                bottom: 60px;
+            }
+
+            .content-section, .profile-section {
+                padding: 80px 40px;
+            }
+
+            .content-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <canvas id="webgl-container"></canvas>
+
+    <audio id="bg-audio" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3">
+    </audio>
+
+    <audio id="click-sound">
+        <source src="https://www.myinstants.com/media/sounds/click.mp3" type="audio/mp3">
+    </audio>
+
+    <div class="loader" id="loader">
+        <div class="spinner"></div>
+    </div>
+
+    <nav class="navbar">
+        <div class="logo" onclick="resetToHome()">WIRAPLAY</div>
+        <div class="nav-links" id="navLinks">
+            <a onclick="enterMatrixMode()">Матрица</a>
+            <a onclick="showContent('movies')">Фильмы</a>
+            <a onclick="showContent('series')">Сериалы</a>
+            <a onclick="showProfile()">Профиль</a>
+        </div>
+        <div class="menu-toggle" id="menuToggle">☰</div>
+    </nav>
+
+    <section class="hero" id="heroSection">
+        <img src="https://source.unsplash.com/random/1920x1080?space" class="hero-bg" alt="Hero Background">
+        <div class="hero-content">
+            <h1>WIRAPLAY</h1>
+            <p>Исследуй киновселенную в темных тонах будущего.</p>
+            <button class="btn" onclick="enterMatrixMode()">Войти в матрицу</button>
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Найди свой фильм..." id="searchInput">
+        </div>
+    </section>
+
+    <div class="matrix-mode" id="matrixMode">
+        <canvas class="matrix-canvas" id="matrixCanvas"></canvas>
+        <div class="matrix-content">
+            <h2>Матрица активирована</h2>
+            <p>Выбери путь или создай свой.</p>
+            <button class="matrix-btn" onclick="showContent('movies')">Фильмы</button>
+            <button class="matrix-btn" onclick="showContent('series')">Сериалы</button>
+            <button class="matrix-btn" onclick="resetToHome()">Выход</button>
+        </div>
+    </div>
+
+    <section class="content-section" id="contentSection">
+        <h2 class="section-title" id="contentTitle">Фильмы</h2>
+        <div class="content-grid" id="contentGrid"></div>
+    </section>
+
+    <section class="profile-section" id="profileSection">
+        <div class="profile-card">
+            <h2>Профиль</h2>
+            <p>Имя: Космический Странник</p>
+            <p>Избранное: 8 фильмов, 3 сериала</p>
+            <p>Последний просмотр: "Эхо черной дыры"</p>
+            <button class="btn" onclick="resetToHome()">На главную</button>
+        </div>
+    </section>
+
+    <div class="modal" id="previewModal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal()">×</span>
+            <h2 id="modalTitle"></h2>
+            <p id="modalDesc"></p>
+            <button class="btn" onclick="playContent()">Смотреть</button>
+            <button class="btn" onclick="addToFavorites()">В избранное</button>
+        </div>
+    </div>
+
+    <footer id="footer">
+        <p>© 2025 WIRAPLAY. Все права защищены.</p>
+        <p><a href="#">О нас</a> | <a href="#">Поддержка</a> | <a href="#">API</a></p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script>
+        // WebGL фон
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('webgl-container'), alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+
+        const geometry = new THREE.SphereGeometry(100, 32, 32);
+        const material = new THREE.MeshBasicMaterial({
+            color: 0xff1a2d,
+            wireframe: true,
+            transparent: true,
+            opacity: 0.2
+        });
+        const sphere = new THREE.Mesh(geometry, material);
+        scene.add(sphere);
+
+        camera.position.z = 200;
+
+        function animateWebGL() {
+            requestAnimationFrame(animateWebGL);
+            sphere.rotation.x += 0.005;
+            sphere.rotation.y += 0.005;
+            renderer.render(scene, camera);
+        }
+        animateWebGL();
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            matrixCanvas.width = window.innerWidth;
+            matrixCanvas.height = window.innerHeight;
+        });
+
+        // Матричный эффект
+        const matrixCanvas = document.getElementById('matrixCanvas');
+        const matrixCtx = matrixCanvas.getContext('2d');
+        matrixCanvas.width = window.innerWidth;
+        matrixCanvas.height = window.innerHeight;
+
+        const matrixChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+        const fontSize = 14;
+        const columns = matrixCanvas.width / fontSize;
+        const drops = Array(Math.floor(columns)).fill(0);
+
+        function drawMatrix() {
+            matrixCtx.fillStyle = 'rgba(26, 26, 26, 0.1)';
+            matrixCtx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
+            matrixCtx.fillStyle = '#00d4ff';
+            matrixCtx.font = `${fontSize}px monospace`;
+
+            drops.forEach((y, i) => {
+                const text = matrixChars[Math.floor(Math.random() * matrixChars.length)];
+                matrixCtx.fillText(text, i * fontSize, y * fontSize);
+                if (y * fontSize > matrixCanvas.height && Math.random() > 0.98) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            });
+        }
+        setInterval(drawMatrix, 60);
+
+        // Данные контента
+        const contentData = {
+            movies: [
+                { title: "Эхо черной дыры", desc: "2023 • Sci-Fi • 2ч 30м", rating: "9.4", img: "https://source.unsplash.com/random/300x400?blackhole" },
+                { title: "Тени космоса", desc: "2022 • Триллер • 2ч 10м", rating: "8.9", img: "https://source.unsplash.com/random/300x400?space" }
+            ],
+            series: [
+                { title: "Нейронные войны", desc: "2022 • Киберпанк • Сезон 1", rating: "9.6", img: "https://source.unsplash.com/random/300x400?cyberpunk" },
+                { title: "Песни космоса", desc: "2021 • Драма • Сезон 2", rating: "9.0", img: "https://source.unsplash.com/random/300x400?stars" }
+            ]
+        };
+
+        // Аудио
+        const bgAudio = document.getElementById('bg-audio');
+        const clickSound = document.getElementById('click-sound');
+
+        // Состояние
+        let currentMode = 'home';
+        let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+
+        // Функции переключения
+        function resetToHome() {
+            clickSound.play();
+            gsap.to('#matrixMode', { opacity: 0, duration: 0.6, onComplete: () => document.getElementById('matrixMode').classList.remove('active') });
+            gsap.to('#contentSection', { opacity: 0, duration: 0.6, onComplete: () => document.getElementById('contentSection').classList.remove('active') });
+            gsap.to('#profileSection', { opacity: 0, duration: 0.6, onComplete: () => document.getElementById('profileSection').classList.remove('active') });
+            gsap.to('#footer', { opacity: 0, duration: 0.6, onComplete: () => document.getElementById('footer').classList.remove('active') });
+            gsap.to('#heroSection', { opacity: 1, y: 0, duration: 0.8, delay: 0.2 });
+            gsap.to('.navbar', { y: 0, duration: 0.6 });
+            currentMode = 'home';
+            bgAudio.play();
+        }
+
+        function enterMatrixMode() {
+            if (currentMode === 'matrix') return;
+            clickSound.play();
+            gsap.to('#heroSection', { opacity: 0, y: 50, duration: 0.6 });
+            gsap.to('#contentSection', { opacity: 0, duration: 0.6, onComplete: () => document.getElementById('contentSection').classList.remove('active') });
+            gsap.to('#profileSection', { opacity: 0, duration: 0.6, onComplete: () => document.getElementById('profileSection').classList.remove('active') });
+            gsap.to('.navbar', { y: 0, duration: 0.6 });
+            gsap.to('#matrixMode', {
+                opacity: 1,
+                duration: 0.8,
+                delay: 0.4,
+                onStart: () => document.getElementById('matrixMode').classList.add('active')
+            });
+            currentMode = 'matrix';
+            bgAudio.pause();
+        }
+
+        function showContent(type) {
+            if (currentMode === type) return;
+            clickSound.play();
+            gsap.to('#matrixMode', { opacity: 0, duration: 0.6, onComplete: () => document.getElementById('matrixMode').classList.remove('active') });
+            gsap.to('#heroSection', { opacity: 0, y: 50, duration: 0.6 });
+            gsap.to('#profileSection', { opacity: 0, duration: 0.6, onComplete: () => document.getElementById('profileSection').classList.remove('active') });
+            gsap.to('#contentSection', {
+                opacity: 1,
+                duration: 0.8,
+                delay: 0.4,
+                onStart: () => {
+                    document.getElementById('contentSection').classList.add('active');
+                    document.getElementById('contentTitle').textContent = type === 'movies' ? 'Фильмы' : 'Сериалы';
+                    renderContent(contentData[type]);
+                }
+            });
+            gsap.to('#footer', { opacity: 1, duration: 0.8, delay: 0.6, onStart: () => document.getElementById('footer').classList.add('active') });
+            gsap.from('.content-card', { opacity: 0, y: 30, stagger: 0.1, duration: 0.6, delay: 0.8 });
+            currentMode = type;
+        }
+
+        function showProfile() {
+            if (currentMode === 'profile') return;
+            clickSound.play();
+            gsap.to('#matrixMode', { opacity: 0, duration: 0.6, onComplete: () => document.getElementById('matrixMode').classList.remove('active') });
+            gsap.to('#heroSection', { opacity: 0, y: 50, duration: 0.6 });
+            gsap.to('#contentSection', { opacity: 0, duration: 0.6, onComplete: () => document.getElementById('contentSection').classList.remove('active') });
+            gsap.to('#profileSection', {
+                opacity: 1,
+                duration: 0.8,
+                delay: 0.4,
+                onStart: () => document.getElementById('profileSection').classList.add('active')
+            });
+            gsap.to('#footer', { opacity: 1, duration: 0.8, delay: 0.6, onStart: () => document.getElementById('footer').classList.add('active') });
+            currentMode = 'profile';
+        }
+
+        // Мобильное меню
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        menuToggle.addEventListener('click', () => {
+            clickSound.play();
+            const isActive = navLinks.classList.toggle('active');
+            menuToggle.textContent = isActive ? '×' : '☰';
+            gsap.to(navLinks, { right: isActive ? 0 : '-100%', duration: 0.6 });
+        });
+
+        // Поиск
+        const searchInput = document.getElementById('searchInput');
+        const contentGrid = document.getElementById('contentGrid');
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            const allContent = [...contentData.movies, ...contentData.series];
+            const filtered = allContent.filter(item => item.title.toLowerCase().includes(query));
+            if (currentMode === 'home') showContent('movies');
+            renderContent(filtered);
+            gsap.from('.content-card', { opacity: 0, y: 20, stagger: 0.1, duration: 0.6 });
+        });
+
+        // Рендеринг контента
+        function renderContent(data) {
+            contentGrid.innerHTML = data.map(item => `
+                <div class="content-card" data-title="${item.title}" data-desc="${item.desc}">
+                    <img src="${item.img}" alt="${item.title}">
+                    <div class="play-btn"></div>
+                    <div class="card-rating">${item.rating}</div>
+                    <div class="card-info">
+                        <h3>${item.title}</h3>
+                        <p>${item.desc}</p>
+                    </div>
+                </div>
+            `).join('');
+            addCardListeners();
+        }
+
+        // Модальное окно
+        function addCardListeners() {
+            document.querySelectorAll('.content-card').forEach(card => {
+                card.addEventListener('click', () => {
+                    clickSound.play();
+                    const title = card.dataset.title;
+                    const desc = card.dataset.desc;
+                    document.getElementById('modalTitle').textContent = title;
+                    document.getElementById('modalDesc').textContent = `Готов к просмотру: ${desc}`;
+                    const modal = document.getElementById('previewModal');
+                    modal.classList.add('active');
+                    gsap.from('.modal-content', { scale: 0.9, opacity: 0, duration: 0.6 });
+                });
+            });
+        }
+
+        function closeModal() {
+            clickSound.play();
+            const modal = document.getElementById('previewModal');
+            gsap.to('.modal-content', {
+                scale: 0.9,
+                opacity: 0,
+                duration: 0.6,
+                onComplete: () => modal.classList.remove('active')
+            });
+        }
+
+        function playContent() {
+            clickSound.play();
+            const title = document.getElementById('modalTitle').textContent;
+            alert(`Воспроизведение "${title}" началось! (Демо)`);
+            closeModal();
+        }
+
+        function addToFavorites() {
+            clickSound.play();
+            const title = document.getElementById('modalTitle').textContent;
+            if (!favorites.includes(title)) {
+                favorites.push(title);
+                localStorage.setItem('favorites', JSON.stringify(favorites));
+                alert(`"${title}" добавлен в избранное!`);
+            } else {
+                alert(`"${title}" уже в избранном!`);
+            }
+        }
+
+        document.querySelector('.modal').addEventListener('click', (e) => {
+            if (e.target.classList.contains('modal')) closeModal();
+        });
+
+        // Анимация загрузки
+        window.addEventListener('load', () => {
+            gsap.to('#loader', { opacity: 0, duration: 1, delay: 1.5, onComplete: () => document.getElementById('loader').classList.add('hidden') });
+            gsap.from('.hero-content', { opacity: 0, y: 50, duration: 1, delay: 2 });
+        });
+
+        // Параллакс
+        document.addEventListener('mousemove', (e) => {
+            const x = (e.clientX / window.innerWidth - 0.5) * 20;
+            const y = (e.clientY / window.innerHeight - 0.5) * 20;
+            gsap.to('.hero-bg', { x, y, duration: 1, ease: 'power2.out' });
+        });
+
+        // Инициализация
+        renderContent(contentData.movies);
+    </script>
+</body>
+</html>

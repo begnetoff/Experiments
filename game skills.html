@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Sheet - World Where I Am Unwelcome</title>
+    <style>
+        body {
+            background-image: url('https://www.transparenttextures.com/patterns/dark-mosaic.png');
+            background-color: #1a1a1a;
+            color: #d4c4a1;
+            font-family: 'Cinzel', serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .character-sheet {
+            background-image: url('https://www.transparenttextures.com/patterns/old-wall.png');
+            background-color: #2b2217;
+            border: 5px solid #4a3c2b;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.8), inset 0 0 10px rgba(255, 215, 0, 0.2);
+            width: 800px;
+            padding: 30px;
+            position: relative;
+        }
+
+        .character-sheet::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.1), transparent);
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            color: #ffd700;
+            text-shadow: 2px 2px 4px #000;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #ffd700;
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 1.5em;
+            color: #ffd700;
+            border-bottom: 1px solid #d4c4a1;
+            padding-bottom: 5px;
+            margin-top: 20px;
+        }
+
+        .section {
+            margin: 15px 0;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            border: 1px solid #4a3c2b;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .stat, .resource, .skill, .ability, .title, .inventory-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 10px;
+            background: rgba(255, 215, 0, 0.05);
+            border-radius: 5px;
+            margin: 5px 0;
+        }
+
+        .stat-label, .resource-label, .skill-label, .ability-label, .title-label, .inventory-label {
+            font-weight: bold;
+            color: #ffd700;
+        }
+
+        .stat-value, .resource-value, .skill-value, .ability-value, .title-value, .inventory-value {
+            color: #d4c4a1;
+        }
+
+        .skills-grid, .abilities-grid, .titles-grid, .inventory-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 5px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #d4c4a1;
+            text-shadow: 1px 1px 2px #000;
+        }
+
+        @media (max-width: 600px) {
+            .character-sheet {
+                width: 90%;
+                padding: 15px;
+            }
+
+            .stats-grid, .skills-grid, .abilities-grid, .titles-grid, .inventory-grid {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            h2 {
+                font-size: 1.2em;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="character-sheet">
+        <h1>Character Sheet - World Where I Am Unwelcome</h1>
+
+        <!-- Character Name -->
+        <div class="section">
+            <h2>Character Name</h2>
+            <div class="stat">
+                <span class="stat-label">Name:</span>
+                <span class="stat-value">Kaelith the Ashen Wraith</span>
+            </div>
+            <div class="stat">
+                <span class="stat-label">Level:</span>
+                <span class="stat-value">1</span>
+            </div>
+        </div>
+
+        <!-- Characteristics (Stats) -->
+        <div class="section">
+            <h2>Characteristics</h2>
+            <div class="stats-grid">
+                <div class="stat">
+                    <span class="stat-label">Strength:</span>
+                    <span class="stat-value">10</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Dexterity:</span>
+                    <span class="stat-value">12</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Endurance:</span>
+                    <span class="stat-value">8</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Intuition:</span>
+                    <span class="stat-value">10</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Health and Mana -->
+        <div class="section">
+            <h2>Resources</h2>
+            <div class="resource">
+                <span class="resource-label">Health:</span>
+                <span class="resource-value">34 (10 + Endurance × 3)</span>
+            </div>
+            <div class="resource">
+                <span class="resource-label">Mana:</span>
+                <span class="resource-value">30 (10 + Intuition × 2)</span>
+            </div>
+        </div>
+
+        <!-- Skills -->
+        <div class="section">
+            <h2>Skills</h2>
+            <div class="skills-grid">
+                <div class="skill">
+                    <span class="skill-label">Stealth:</span>
+                    <span class="skill-value">Rank 1</span>
+                </div>
+                <div class="skill">
+                    <span class="skill-label">Crafting:</span>
+                    <span class="skill-value">Rank 1</span>
+                </div>
+                <div class="skill">
+                    <span class="skill-label">Poison Resistance:</span>
+                    <span class="skill-value">Rank 1</span>
+                </div>
+                <div class="skill">
+                    <span class="skill-label">Chaos Incitement:</span>
+                    <span class="skill-value">Rank 1</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Abilities -->
+        <div class="section">
+            <h2>Abilities</h2>
+            <div class="abilities-grid">
+                <div class="ability">
+                    <span class="ability-label">Ashen Veil:</span>
+                    <span class="ability-value">Blinds enemies (DC 15, -3 attack rolls, 2 rounds, 3/day)</span>
+                </div>
+                <div class="ability">
+                    <span class="ability-label">None:</span>
+                    <span class="ability-value">Awaiting GM reward...</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Titles -->
+        <div class="section">
+            <h2>Titles</h2>
+            <div class="titles-grid">
+                <div class="title">
+                    <span class="title-label">Ashen Wraith:</span>
+                    <span class="title-value">+2 to Stealth in dark environments</span>
+                </div>
+                <div class="title">
+                    <span class="title-label">None:</span>
+                    <span class="title-value">Earn more through deeds...</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Inventory -->
+        <div class="section">
+            <h2>Inventory</h2>
+            <div class="inventory-grid">
+                <div class="inventory-item">
+                    <span class="inventory-label">Lighter:</span>
+                    <span class="inventory-value">Can start fires (DC 10 Crafting)</span>
+                </div>
+                <div class="inventory-item">
+                    <span class="inventory-label">Knife:</span>
+                    <span class="inventory-value">1d4 damage, +1 to Crafting traps</span>
+                </div>
+                <div class="inventory-item">
+                    <span class="inventory-label">Tattered Journal:</span>
+                    <span class="inventory-value">Contains cryptic notes (DC 15 Intuition to decipher)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            Forged in the Shadows of Eyloria - May Ksavir Guide Your Path
+        </div>
+    </div>
+</body>
+</html>

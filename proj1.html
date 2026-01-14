@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Min Praksisportefølje</title>
+    <style>
+        /* --- Grunnleggende styling --- */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #004080;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #0066cc;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 15px 20px;
+            display: block;
+        }
+
+        nav a:hover {
+            background-color: #004080;
+        }
+
+        main {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        section {
+            margin-bottom: 40px;
+        }
+
+        h1, h2 {
+            color: #004080;
+        }
+
+        .logg-bilde, .prosjekt-bilde {
+            max-width: 100%;
+            height: auto;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+
+        .prosjekt, .cv {
+            background-color: #e6f0ff;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        footer {
+            background-color: #004080;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+        }
+
+        /* Responsiv meny */
+        @media (max-width: 600px) {
+            nav {
+                flex-direction: column;
+            }
+        }
+
+        /* Styling for editable text and buttons */
+        .edit-btn, .save-btn {
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            margin-top: 10px;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+
+        .edit-btn:hover, .save-btn:hover {
+            background-color: #004080;
+        }
+
+        .editable[contenteditable="true"] {
+            border: 1px dashed #0066cc;
+            padding: 5px;
+        }
+
+        .file-upload {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Min Praksisportefølje</h1>
+    </header>
+
+    <nav>
+        <a href="#hjem">Hjem</a>
+        <a href="#praksis">Praksis & Logg</a>
+        <a href="#prosjekter">Skoleprosjekter</a>
+        <a href="#cv">CV & Om Meg</a>
+    </nav>
+
+    <main>
+        <!-- Hjem -->
+        <section id="hjem">
+            <h2>Velkommen til min portefølje</h2>
+            <p>Her kan du følge min praksis, se prosjekter jeg har jobbet med, og lære mer om meg.</p>
+        </section>
+
+        <!-- Praksis og logg -->
+        <section id="praksis">
+            <h2>Praksis og logg</h2>
+            
+            <div class="praksisbedrift">
+                <h3>Bedrift Navn 1</h3>
+                <p>Beskrivelse av bedriften og hva jeg gjør her.</p>
+            </div>
+
+            <div class="logg">
+                <h4>Uke 34 - 2025</h4>
+                <p>Beskrivelse av arbeidsoppgaver, møter og sosiale aktiviteter.</p>
+                <img src="bilde1.jpg" alt="Arbeidsbilde" class="logg-bilde">
+            </div>
+
+            <div class="logg">
+                <h4>Uke 35 - 2025</h4>
+                <p>Beskrivelse av arbeidsoppgaver, møter og sosiale aktiviteter.</p>
+                <img src="bilde2.jpg" alt="Arbeidsbilde" class="logg-bilde">
+            </div>
+        </section>
+
+        <!-- Skoleprosjekter -->
+        <section id="prosjekter">
+            <h2>Skoleprosjekter</h2>
+
+            <div class="prosjekt" id="prosjekt1">
+                <h3>Prosjekt 1</h3>
+                <p class="editable" data-id="prosjekt1-desc">Beskrivelse av prosjektet og hva jeg har lært.</p>
+                <input type="file" accept="image/*" class="file-upload" data-id="prosjekt1-img">
+                <img src="" alt="Prosjektbilde" class="prosjekt-bilde" data-id="prosjekt1-img-display" style="display: none;">
+                <button class="edit-btn" data-id="prosjekt1">Rediger tekst</button>
+                <button class="save-btn" data-id="prosjekt1" style="display: none;">Lagre tekst</button>
+            </div>
+
+            <div class="prosjekt" id="prosjekt2">
+                <h3>Prosjekt 2</h3>
+                <p class="editable" data-id="prosjekt2-desc">Beskrivelse av prosjektet og hva jeg har lært.</p>
+                <input type="file" accept="image/*" class="file-upload" data-id="prosjekt2-img">
+                <img src="" alt="Prosjektbilde" class="prosjekt-bilde" data-id="prosjekt2-img-display" style="display: none;">
+                <button class="edit-btn" data-id="prosjekt2">Rediger tekst</button>
+                <button class="save-btn" data-id="prosjekt2" style="display: none;">Lagre tekst</button>
+            </div>
+        </section>
+
+        <!-- CV og Om meg -->
+        <section id="cv">
+            <h2>CV & Om Meg</h2>
+
+            <div class="cv">
+                <h3>Om Meg</h3>
+                <p>Kort tekst om meg selv og mine interesser.</p>
+            </div>
+
+            <div class="cv">
+                <h3>CV</h3>
+                <p>Utdanning, erfaring og ferdigheter.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 Min Praksisportefølje</p>
+    </footer>
+
+    <script>
+        // Load saved data from localStorage on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            const projects = ['prosjekt1', 'prosjekt2'];
+            projects.forEach(projectId => {
+                // Load saved text
+                const savedText = localStorage.getItem(`${projectId}-desc`);
+                if (savedText) {
+                    document.querySelector(`p[data-id="${projectId}-desc"]`).textContent = savedText;
+                }
+                // Load saved image
+                const savedImage = localStorage.getItem(`${projectId}-img`);
+                if (savedImage) {
+                    const imgElement = document.querySelector(`img[data-id="${projectId}-img-display"]`);
+                    imgElement.src = savedImage;
+                    imgElement.style.display = 'block';
+                }
+            });
+        });
+
+        // Handle text editing
+        document.querySelectorAll('.edit-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                const projectId = button.getAttribute('data-id');
+                const textElement = document.querySelector(`p[data-id="${projectId}-desc"]`);
+                const saveButton = document.querySelector(`button.save-btn[data-id="${projectId}"]`);
+                const editButton = document.querySelector(`button.edit-btn[data-id="${projectId}"]`);
+
+                textElement.setAttribute('contenteditable', 'true');
+                textElement.focus();
+                editButton.style.display = 'none';
+                saveButton.style.display = 'inline-block';
+            });
+        });
+
+        // Handle text saving
+        document.querySelectorAll('.save-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                const projectId = button.getAttribute('data-id');
+                const textElement = document.querySelector(`p[data-id="${projectId}-desc"]`);
+                const saveButton = document.querySelector(`button.save-btn[data-id="${projectId}"]`);
+                const editButton = document.querySelector(`button.edit-btn[data-id="${projectId}"]`);
+
+                textElement.setAttribute('contenteditable', 'false');
+                localStorage.setItem(`${projectId}-desc`, textElement.textContent);
+                saveButton.style.display = 'none';
+                editButton.style.display = 'inline-block';
+            });
+        });
+
+        // Handle file upload
+        document.querySelectorAll('.file-upload').forEach(input => {
+            input.addEventListener('change', (event) => {
+                const file = event.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        const projectId = event.target.getAttribute('data-id');
+                        const imgElement = document.querySelector(`img[data-id="${projectId}-img-display"]`);
+                        imgElement.src = e.target.result;
+                        imgElement.style.display = 'block';
+                        localStorage.setItem(`${projectId}-img`, e.target.result);
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

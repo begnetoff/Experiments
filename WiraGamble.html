@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WIRACULT | Embrace the Eternal Darkness</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;700&family=Special+Elite&family=Creepster&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --blood-red: #9a0000;
+            --dark-red: #500;
+            --light-red: #ff3333;
+            --text-color: #d1d1d1;
+            --dark-bg: #080808;
+            --shadow-black: #1a0000;
+        }
+        
+        body {
+            background: linear-gradient(0deg, #000, #1a0000);
+            color: var(--text-color);
+            font-family: 'Crimson Text', serif;
+            overflow-x: hidden;
+            cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M16 16 L16 0 L14 0 L14 16 L0 16 L0 18 L14 18 L14 32 L16 32 L16 18 L32 18 L32 16 Z' fill='%23ff0000'/%3E%3C/svg%3E"), auto;
+            position: relative;
+        }
+        
+        .blood-drip {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 150px;
+            background: url("data:image/svg+xml,%3Csvg width='100%25' height='150' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3ClinearGradient id='blood' x1='0%25' y1='0%25' x2='0%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23000000;stop-opacity:0'/%3E%3Cstop offset='100%25' style='stop-color:%239a0000;stop-opacity:1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M0,0 L100,0 L95,150 C90,130 85,150 80,140 C75,130 70,145 65,135 C60,125 55,140 50,130 C45,120 40,135 35,125 C30,115 25,130 20,120 C15,110 10,125 5,115 L0,150 Z' fill='url(%23blood)'/%3E%3C/svg%3E");
+            background-size: cover;
+            z-index: 1000;
+            animation: dripPulse 5s infinite;
+        }
+        
+        .noise {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.15;
+            pointer-events: none;
+            z-index: 990;
+            animation: noiseShift 0.1s infinite;
+        }
+        
+        .container {
+            max-width: 1400px;
+            width: 95%;
+            margin: 0 auto;
+            padding: 60px 20px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 100px;
+            position: relative;
+        }
+        
+        .logo-container {
+            position: relative;
+            margin-bottom: 40px;
+        }
+        
+        .logo {
+            font-family: 'Creepster', cursive;
+            font-size: 9rem;
+            font-weight: bold;
+            letter-spacing: 12px;
+            background: linear-gradient(to bottom, #ff5555, var(--blood-red));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 15px var(--light-red), 0 0 30px var(--light-red), 0 0 45px #500;
+            animation: flicker 3s infinite alternate, glitchText 4s infinite;
+            position: relative;
+        }
+        
+        .logo::before, .logo::after {
+            content: "WIRACULT";
+            position: absolute;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to bottom, #ff5555, var(--blood-red));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .logo::before {
+            animation: glitchText 2.5s infinite reverse;
+            transform: skew(2deg);
+            clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);
+        }
+        
+        .logo::after {
+            animation: glitchText 3.5s infinite;
+            transform: skew(-2deg);
+            clip-path: polygon(0 50%, 100% 50%, 100% 100%, 0 100%);
+        }
+        
+        .tagline {
+            font-family: 'Special Elite', cursive;
+            font-size: 1.8rem;
+            letter-spacing: 5px;
+            color: var(--text-color);
+            text-shadow: 0 0 10px var(--blood-red), 0 0 20px #500;
+            animation: pulse 6s infinite;
+        }
+        
+        .creepy-symbol {
+            position: absolute;
+            font-size: 3rem;
+            color: rgba(154, 0, 0, 0.5);
+            text-shadow: 0 0 10px var(--blood-red);
+            animation: float 6s infinite ease-in-out, rotate 30s linear infinite;
+        }
+        
+        main {
+            display: flex;
+            flex-direction: column;
+            gap: 150px;
+        }
+        
+        .section {
+            position: relative;
+            background: linear-gradient(45deg, #0a0000, #1a0000);
+            padding: 60px;
+            border: 2px solid var(--dark-red);
+            box-shadow: 0 0 40px rgba(154, 0, 0, 0.3), inset 0 0 20px rgba(0, 0, 0, 0.8);
+            transition: all 0.4s ease;
+        }
+        
+        .section:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 60px rgba(154, 0, 0, 0.5), inset 0 0 30px rgba(0, 0, 0, 0.9);
+            border-color: var(--blood-red);
+        }
+        
+        .section h2 {
+            font-family: 'Creepster', cursive;
+            font-size: 3.5rem;
+            margin-bottom: 40px;
+            letter-spacing: 8px;
+            color: var(--blood-red);
+            text-shadow: 0 0 15px var(--light-red), 0 0 25px #500;
+            position: relative;
+        }
+        
+        .section p {
+            font-size: 1.3rem;
+            line-height: 1.9;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9);
+        }
+        
+        .join-button {
+            padding: 20px 50px;
+            background: linear-gradient(45deg, var(--dark-red), #300);
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.5rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            border: 2px solid var(--blood-red);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.6s;
+            font-family: 'Special Elite', cursive;
+            text-shadow: 0 0 5px #000;
+        }
+        
+        .join-button:hover {
+            background: linear-gradient(45deg, var(--blood-red), #500);
+            box-shadow: 0 0 30px var(--light-red), 0 0 60px var(--blood-red);
+            transform: translateY(-5px);
+        }
+        
+        .join-button::before {
+            content: "JOIN NOW";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 0, 0, 0.3);
+            transition: all 0.6s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: skewX(-20deg);
+        }
+        
+        .join-button:hover::before {
+            left: 100%;
+        }
+        
+        .ritual-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+        
+        .ritual-image {
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+            border: 2px solid var(--dark-red);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+            transition: all 0.5s;
+        }
+        
+        .ritual-image:hover {
+            transform: scale(1.1) rotate(2deg);
+            box-shadow: 0 0 40px rgba(154, 0, 0, 0.6);
+            z-index: 5;
+        }
+        
+        .ritual-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(1) contrast(1.2) brightness(0.7);
+            transition: all 0.5s;
+        }
+        
+        .ritual-image:hover img {
+            filter: grayscale(0) contrast(1.5) brightness(0.9);
+            transform: scale(1.15);
+        }
+        
+        .ritual-caption {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+            color: var(--text-color);
+            transform: translateY(100%);
+            transition: all 0.5s;
+            text-shadow: 0 0 5px #000;
+        }
+        
+        .ritual-image:hover .ritual-caption {
+            transform: translateY(0);
+        }
+        
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 60px 0;
+            position: relative;
+        }
+        
+        .countdown-item {
+            position: relative;
+        }
+        
+        .countdown-number {
+            font-size: 4.5rem;
+            font-family: 'Creepster', cursive;
+            color: var(--blood-red);
+            text-shadow: 0 0 20px var(--light-red), 0 0 40px #500;
+            animation: pulse 2s infinite;
+        }
+        
+        .countdown-label {
+            font-size: 1.3rem;
+            letter-spacing: 3px;
+            font-family: 'Special Elite', cursive;
+        }
+        
+        .blood-drop {
+            position: fixed;
+            width: 3px;
+            background: linear-gradient(to bottom, var(--blood-red), #300);
+            box-shadow: 0 0 10px var(--blood-red), 0 0 20px #500;
+            z-index: 1001;
+            pointer-events: none;
+            animation: drip 8s linear infinite;
+        }
+        
+        @keyframes dripPulse {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 1; }
+        }
+        
+        @keyframes noiseShift {
+            0% { transform: translate(0, 0); }
+            50% { transform: translate(2px, -2px); }
+            100% { transform: translate(-2px, 2px); }
+        }
+        
+        @keyframes flicker {
+            0%, 18%, 22%, 25%, 53%, 57%, 100% { opacity: 1; }
+            20%, 24%, 55% { opacity: 0.3; }
+        }
+        
+        @keyframes glitchText {
+            0% { transform: translate(0); }
+            20% { transform: translate(-5px, 5px); }
+            40% { transform: translate(5px, -5px); }
+            60% { transform: translate(-3px, 3px); }
+            80% { transform: translate(3px, -3px); }
+            100% { transform: translate(0); }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-30px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="noise"></div>
+    <div class="blood-drip"></div>
+    
+    <div class="container">
+        <header>
+            <div class="logo-container">
+                <div class="creepy-symbol" style="top: -50px; left: 5%;">⛧</div>
+                <div class="creepy-symbol" style="top: 30px; right: 10%;">✠</div>
+                <div class="creepy-symbol" style="bottom: -40px; left: 25%;">⍟</div>
+                <div class="creepy-symbol" style="bottom: -20px; right: 20%;">☽</div>
+                <h1 class="logo">WIRACULT</h1>
+            </div>
+            <p class="tagline">THE VOID CALLS TO THOSE WHO DARE TO LISTEN</p>
+            
+            <div class="countdown">
+                <div class="countdown-item">
+                    <div class="countdown-number" id="countdown-days">13</div>
+                    <div class="countdown-label">DAYS</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="countdown-hours">06</div>
+                    <div class="countdown-label">HOURS</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="countdown-minutes">66</div>
+                    <div class="countdown-label">MINUTES</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="countdown-seconds">60</div>
+                    <div class="countdown-label">SECONDS</div>
+                </div>
+            </div>
+            <p style="text-align: center; font-size: 1.5rem; color: var(--blood-red); text-shadow: 0 0 15px #500;">UNTIL THE ETERNAL NIGHT DESCENDS</p>
+        </header>
+        
+        <main>
+            <section class="section">
+                <h2>The Abyss Awaits</h2>
+                <p>In the shadows of existence, where mortal eyes dare not linger, WIRACULT stands as the eternal guardian of forbidden truths. We are not a mere congregation – we are the chosen, the bearers of knowledge that would shatter the minds of the weak.</p>
+                <p>The veil between worlds trembles, and the whispers of the ancient ones grow louder. Will you heed their call, or will you cower in the fading light of a dying world?</p>
+                <div style="text-align: center; margin-top: 40px;">
+                    <a href="#join" class="join-button">EMBRACE THE VOID</a>
+                </div>
+            </section>
+            
+            <section class="section">
+                <h2>Rituals of Power</h2>
+                <p>Our sacred rites tear through the fabric of reality itself. Join us to wield the forces that mortals call unnatural:</p>
+                <div class="ritual-gallery">
+                    <div class="ritual-image">
+                        <img src="https://via.placeholder.com/300x250?text=Ritual+1" alt="Ritual">
+                        <div class="ritual-caption">Blood Invocation</div>
+                    </div>
+                    <div class="ritual-image">
+                        <img src="https://via.placeholder.com/300x250?text=Ritual+2" alt="Ritual">
+                        <div class="ritual-caption">Shadow Binding</div>
+                    </div>
+                    <div class="ritual-image">
+                        <img src="https://via.placeholder.com/300x250?text=Ritual+3" alt="Ritual">
+                        <div class="ritual-caption">Void Summoning</div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="section">
+                <h2>The Chosen Ones</h2>
+                <p>Those who walk our path shed their mortal fears and ascend to power beyond comprehension. The blood of the ancients flows through us, awakening the dormant chaos within.</p>
+                <p>Are you prepared to cast aside the lies of civilization and claim your true destiny?</p>
+                <div style="text-align: center; margin-top: 40px;">
+                    <a href="#join" class="join-button">BECOME ETERNAL</a>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        // Random blood drops
+        function createBloodDrop() {
+            const drop = document.createElement('div');
+            drop.className = 'blood-drop';
+            drop.style.left = `${Math.random() * 100}vw`;
+            drop.style.animationDuration = `${6 + Math.random() * 4}s`;
+            document.body.appendChild(drop);
+            setTimeout(() => drop.remove(), 10000);
+        }
+        setInterval(createBloodDrop, 1000);
+    </script>
+</body>
+</html>

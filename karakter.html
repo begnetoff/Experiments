@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Where I Am Unwelcome - A4 Printable Character Sheet</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            color: #000; /* Black for printing */
+        }
+
+        @page {
+            size: A4; /* 210mm x 297mm */
+            margin: 15mm; /* Standard margin for A4 printing */
+        }
+
+        .character-sheet {
+            width: 180mm; /* 210mm - 15mm margins on each side */
+            margin: 0 auto;
+            color: #000;
+            font-size: 12pt; /* Adjusted for readability on A4 */
+        }
+
+        h1 {
+            font-size: 20pt;
+            text-align: center;
+            margin-bottom: 15pt;
+            color: #000;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 10pt;
+            margin-bottom: 15pt;
+        }
+
+        th, td {
+            padding: 8pt;
+            border: 1px solid #000;
+            text-align: center;
+        }
+
+        th {
+            background: #e0e0e0; /* Light gray for headers when printing */
+            font-weight: bold;
+        }
+
+        td {
+            background: #fff;
+        }
+
+        .section {
+            margin-bottom: 15pt;
+            page-break-inside: avoid; /* Prevent sections from splitting across pages */
+        }
+
+        .section-title {
+            font-size: 14pt;
+            margin-bottom: 10pt;
+            color: #000;
+        }
+
+        .sub-section {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15pt;
+            gap: 10pt;
+            page-break-inside: avoid;
+        }
+
+        .box {
+            border: 1px solid #000;
+            padding: 10pt;
+            text-align: center;
+            flex: 1;
+            margin: 0 5pt;
+        }
+
+        .box-label {
+            font-size: 10pt;
+            margin-bottom: 8pt;
+        }
+
+        .box-value {
+            font-size: 12pt;
+            min-height: 40pt; /* Increased space for writing */
+        }
+
+        .skills-table td:first-child {
+            text-align: left;
+            padding-left: 15pt;
+        }
+
+        .notes-section {
+            min-height: 200pt; /* Plenty of space for writing */
+            border: 1px solid #000;
+            padding: 10pt;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 15pt;
+            font-size: 9pt;
+            color: #000;
+            page-break-before: always; /* Ensure footer starts on a new page if needed */
+        }
+
+        .checkbox {
+            display: inline-block;
+            width: 14pt;
+            height: 14pt;
+            border: 1px solid #000;
+            border-radius: 3pt;
+            margin: 0 4pt;
+        }
+
+        .empty-cell {
+            min-height: 40pt; /* Increased space for writing */
+            padding: 10pt;
+        }
+
+        /* Ensure proper page breaks */
+        .page-break {
+            page-break-before: always;
+        }
+
+        @media print {
+            body {
+                background: none;
+                padding: 0;
+            }
+
+            .character-sheet {
+                background: none;
+                border: none;
+                padding: 0;
+                color: #000;
+            }
+
+            h1, .section-title, .box-label, th {
+                color: #000;
+            }
+
+            td, .box, .notes-section {
+                background: none;
+                border: 1px solid #000;
+            }
+
+            .footer {
+                color: #000;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="character-sheet">
+        <!-- Page 1 -->
+        <!-- Character Basics -->
+        <div class="section">
+            <h1>World Where I Am Unwelcome: Character Sheet</h1>
+            <div class="section-title">Character Basics</div>
+            <table>
+                <tr>
+                    <th>Character Name</th>
+                    <th>Class & Level</th>
+                    <th>Background</th>
+                    <th>Player Name</th>
+                </tr>
+                <tr>
+                    <td class="empty-cell"></td>
+                    <td class="empty-cell"></td>
+                    <td class="empty-cell"></td>
+                    <td class="empty-cell"></td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <th>Race</th>
+                    <th>Alignment</th>
+                    <th>Experience Points</th>
+                </tr>
+                <tr>
+                    <td class="empty-cell"></td>
+                    <td class="empty-cell"></td>
+                    <td class="empty-cell"></td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Ability Scores and Saving Throws -->
+        <div class="section">
+            <div class="sub-section">
+                <!-- Ability Scores -->
+                <div style="flex: 2;">
+                    <div class="section-title">Ability Scores</div>
+                    <table>
+                        <tr>
+                            <th>Ability</th>
+                            <th>Score</th>
+                            <th>Modifier</th>
+                        </tr>
+                        <tr>
+                            <td>Strength <!-- Icon: Sword --> </td>
+                            <td class="empty-cell"></td>
+                            <td class="empty-cell"></td>
+                        </tr>
+                        <tr>
+                            <td>Dexterity <!-- Icon: Bow --> </td>
+                            <td class="empty-cell"></td>
+                            <td class="empty-cell"></td>
+                        </tr>
+                        <tr>
+                            <td>Constitution <!-- Icon: Shield --> </td>
+                            <td class="empty-cell"></td>
+                            <td class="empty-cell"></td>
+                        </tr>
+                        <tr>
+                            <td>Intelligence <!-- Icon: Book --> </td>
+                            <td class="empty-cell"></td>
+                            <td class="empty-cell"></td>
+                        </tr>
+                        <tr>
+                            <td>Wisdom <!-- Icon: Eye --> </td>
+                            <td class="empty-cell"></td>
+                            <td class="empty-cell"></td>
+                        </tr>
+                        <tr>
+                            <td>Charisma <!-- Icon: Speech Bubble --> </td>
+                            <td class="empty-cell"></td>
+                            <td class="empty-cell"></td>
+                        </tr>
+                    </table>
+                </div>
+
+                <!-- Saving Throws -->
+                <div style="flex: 1.5;">
+                    <div class="section-title">Saving Throws</div>
+                    <table>
+                        <tr>
+                            <th>Save</th>
+                            <th>Modifier</th>
+                            <th>Proficient</th>
+                        </tr>
+                        <tr>
+                            <td>Strength <!-- Icon: Sword --> </td>
+                            <td class="empty-cell"></td>
+                            <td><span class="checkbox"></span> <!-- Icon: Checkmark if proficient --></td>
+                        </tr>
+                        <tr>
+                            <td>Dexterity <!-- Icon: Bow --> </td>
+                            <td class="empty-cell"></td>
+                            <td><span class="checkbox"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Constitution <!-- Icon: Shield --> </td>
+                            <td class="empty-cell"></td>
+                            <td><span class="checkbox"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Intelligence <!-- Icon: Book --> </td>
+                            <td class="empty-cell"></td>
+                            <td><span class="checkbox"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Wisdom <!-- Icon: Eye --> </td>
+                            <td class="empty-cell"></td>
+                            <td><span class="checkbox"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Charisma <!-- Icon: Speech Bubble --> </td>
+                            <td class="empty-cell"></td>
+                            <td><span class="checkbox"></span></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Special Mechanics -->
+        <div class="section">
+            <div class="section-title">Special Mechanics</div>
+            <div class="sub-section">
+                <div class="box">
+                    <div class="box-label">Forsaken Points (Max 3)</div>
+                    <div class="box-value">
+                        <span class="checkbox"></span>
+                        <span class="checkbox"></span>
+                        <span class="checkbox"></span>
+                        <!-- Icon: Star for each point -->
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="box-label">Corruption Points (Max 5)</div>
+                    <div class="box-value">
+                        <span class="checkbox"></span>
+                        <span class="checkbox"></span>
+                        <span class="checkbox"></span>
+                        <span class="checkbox"></span>
+                        <span class="checkbox"></span>
+                        <!-- Icon: Skull for each point -->
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="box-label">Mark of the Forsaken</div>
+                    <div class="box-value">Advantage vs Fear<br>Disadvantage on Persuasion vs Light’s Faithful<br>Commune 1/Long Rest (Religion DC 15)</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page 2 -->
+        <div class="page-break"></div>
+
+        <!-- Skills -->
+        <div class="section">
+            <div class="section-title">Skills</div>
+            <table class="skills-table">
+                <tr>
+                    <th>Skill</th>
+                    <th>Modifier</th>
+                    <th>Proficient</th>
+                    <th>Skill</th>
+                    <th>Modifier</th>
+                    <th>Proficient</th>
+                </tr>
+                <tr>
+                    <td>Acrobatics (Dex) <!-- Icon: Acrobat --> </td>
+                    <td class="empty-cell"></td>
+                    <td><span class="checkbox"></span></td>
+                    <td>Medicine (Wis) <!-- Icon: Herb --> </td>
+                    <td class="empty-cell"></td>
+                    <td><span class="checkbox"></span></td>
+                </tr>
+                <tr>
+                    <td>Animal Handling (Wis) <!-- Icon: Paw --> </td>
+                    <td class="empty-cell"></td>
+                    <td><span class="checkbox"></span></td>
+                    <td>Nature (Int) <!-- Icon: Leaf --> </td>
+                    <td class="empty-cell"></td>
+                    <td><span class="checkbox"></span></td>
+                </tr>
+                <tr>
+                    <td>Arcana (Int) <!-- Icon: Magic Wand --> </td>
+                    <td class="empty-cell"></td>
+                    <td><span class="checkbox"></span></td>
+                    <td>Perception (Wis) <!-- Icon: Eye --> </td>
+                    <td class="empty-cell"></td>
+                    <td><span class="checkbox"></span></td>
+                </tr>
+                <tr>
+                    <td>Athletics (Str) <!-- Icon: Muscle --> </td>
+                    <td class="empty-cell"></td>
+                    <td><span class="checkbox"></span></td>
+                    <td>Performance (Cha) <!-- Icon: Mask --> </td>
+                    <td class="empty-cell"></td>
+                    <td><span class="checkbox"></span></td>
+                </tr>
+                <tr>
+                    <td>Deception (Cha) <!-- Icon: Mask --> </td>
+                    <td class="empty-cell"></td>
+                    <td><span class="checkbox"></span></td>
+                    <td>Persuasion (Cha) <!-- Icon: Speech Bubble --> </td>
+                    <td class="empty-cell"></td>
+                    <td><span class="checkbox"></span></td>
+                </tr>
+                <tr>
+                    <td>History (Int) <!-- Icon: Scroll --> </td>
+                    <td class="empty-cell"></td>
+                    <td><span class="checkbox"></span></td>
+                    <td>Religion (Int) <!-- Icon: Cross --> </td>
+                    <td class="empty-cell"></td>
+                    <td><span class="checkbox"></span></td>
+                </tr>
+                <tr>
+                    <td>Insight (Wis) <!-- Icon: Light Bulb --> </td>
+                    <td class="empty-cell"></td>
+                    <td><span class="checkbox"></span></td>
+                    <td>Sleight of Hand (Dex) <!-- Icon: Hand --> </td>
+                    <td class="empty-cell"></td>
+                    <td><span class="checkbox"></span></td>
+                </tr>
+                <tr>
+                    <td>Intimidation (Cha) <!-- Icon: Fist --> </td>
+                    <td class="empty-cell"></td>
+                    <td><span class="checkbox"></span></td>
+                    <td>Stealth (Dex) <!-- Icon: Cloak --> </td>
+                    <td class="empty-cell"></td>
+                    <td><span class="checkbox"></span></td>
+                </tr>
+                <tr>
+                    <td>Investigation (Int) <!-- Icon: Magnifying Glass --> </td>
+                    <td class="empty-cell"></td>
+                    <td><span class="checkbox"></span></td>
+                    <td>Survival (Wis) <!-- Icon: Compass --> </td>
+                    <td class="empty-cell"></td>
+                    <td><span class="checkbox"></span></td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Combat Stats -->
+        <div class="section">
+            <div class="section-title">Combat Stats</div>
+            <div class="sub-section">
+                <div class="box">
+                    <div class="box-label">Armor Class <!-- Icon: Shield --> </div>
+                    <div class="box-value"></div>
+                </div>
+                <div class="box">
+                    <div class="box-label">Initiative <!-- Icon: Lightning Bolt --> </div>
+                    <div class="box-value"></div>
+                </div>
+                <div class="box">
+                    <div class="box-label">Speed <!-- Icon: Boot --> </div>
+                    <div class="box-value"></div>
+                </div>
+                <div class="box">
+                    <div class="box-label">Hit Points (Max) <!-- Icon: Heart --> </div>
+                    <div class="box-value"></div>
+                </div>
+                <div class="box">
+                    <div class="box-label">Current HP</div>
+                    <div class="box-value"></div>
+                </div>
+                <div class="box">
+                    <div class="box-label">Temporary HP</div>
+                    <div class="box-value"></div>
+                </div>
+            </div>
+
+            <table>
+                <tr>
+                    <th>Attack</th>
+                    <th>Bonus</th>
+                    <th>Damage/Type</th>
+                </tr>
+                <tr>
+                    <td class="empty-cell"> <!-- Icon: Sword or Wand --> </td>
+                    <td class="empty-cell"></td>
+                    <td class="empty-cell"></td>
+                </tr>
+                <tr>
+                    <td class="empty-cell"></td>
+                    <td class="empty-cell"></td>
+                    <td class="empty-cell"></td>
+                </tr>
+                <tr>
+                    <td class="empty-cell"></td>
+                    <td class="empty-cell"></td>
+                    <td class="empty-cell"></td>
+                </tr>
+                <tr>
+                    <td class="empty-cell"></td>
+                    <td class="empty-cell"></td>
+                    <td class="empty-cell"></td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Page 3 -->
+        <div class="page-break"></div>
+
+        <!-- Features, Traits, and Spells -->
+        <div class="section">
+            <div class="sub-section">
+                <div style="flex: 1;">
+                    <div class="section-title">Features & Traits</div>
+                    <div class="notes-section"></div>
+                </div>
+                <div style="flex: 1;">
+                    <div class="section-title">Spells</div>
+                    <table>
+                        <tr>
+                            <th>Level</th>
+                            <th>Spell Name</th>
+                            <th>Slots</th>
+                        </tr>
+                        <tr>
+                            <td>Cantrip</td>
+                            <td class="empty-cell"></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>Cantrip</td>
+                            <td class="empty-cell"></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>1st</td>
+                            <td class="empty-cell"></td>
+                            <td>
+                                <span class="checkbox"></span>
+                                <span class="checkbox"></span>
+                                <span class="checkbox"></span>
+                                <span class="checkbox"></span>
+                                <!-- Icon: Checkmark for slots -->
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>1st</td>
+                            <td class="empty-cell"></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>2nd</td>
+                            <td class="empty-cell"></td>
+                            <td>
+                                <span class="checkbox"></span>
+                                <span class="checkbox"></span>
+                                <span class="checkbox"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2nd</td>
+                            <td class="empty-cell"></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>3rd</td>
+                            <td class="empty-cell"></td>
+                            <td>
+                                <span class="checkbox"></span>
+                                <span class="checkbox"></span>
+                                <td class="empty-cell"></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>4th</td>
+                            <td class="empty-cell"></td>
+                            <td>
+                                <span class="checkbox"></span>
+                                <span class="checkbox"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>4th</td>
+                            <td class="empty-cell"></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>5th</td>
+                            <td class="empty-cell"></td>
+                            <td>
+                                <span class="checkbox"></span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Equipment and Inventory -->
+        <div class="section">
+            <div class="section-title">Equipment & Inventory</div>
+            <div class="sub-section">
+                <div style="flex: 1;">
+                    <div class="box">
+                        <div class="box-label">Gold Pieces <!-- Icon: Coin --> </div>
+                        <div class="box-value"></div>
+                    </div>
+                    <div class="box">
+                        <div class="box-label">Silver Pieces <!-- Icon: Coin --> </div>
+                        <div class="box-value"></div>
+                    </div>
+                    <div class="box">
+                        <div class="box-label">Copper Pieces <!-- Icon: Coin --> </div>
+                        <div class="box-value"></div>
+                    </div>
+                </div>
+                <div style="flex: 2;">
+                    <div class="notes-section"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notes -->
+        <div class="section">
+            <div class="section-title">Notes</div>
+            <div class="notes-section"></div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            Forged by the Outcasts of Ksavir in the Age of Shadows - Fight for Vengeance
+        </div>
+    </div>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Where I Am Unwelcome - A4 Printable Character Sheet</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            color: #000; /* Black for printing */
+        }
+
+        @page {
+            size: A4; /* 210mm x 297mm */
+            margin: 15mm; /* Standard margin for A4 printing */
+        }
+
+        .character-sheet {
+            width: 180mm; /* 210mm - 15mm margins on each side */
+            margin: 0 auto;
+            color: #000;
+            font-size: 12pt; /* Adjusted for readability on A4 */
+        }
+
+        h1 {
+            font-size: 20pt;
+            text-align: center;
+            margin-bottom: 15pt;
+            color: #000;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 10pt;
+            margin-bottom: 15pt;
+        }
+
+        th, td {
+            padding: 8pt;
+            border: 1px solid #000;
+            text-align: center;
+        }
+
+        th {
+            background: #e0e0e0; /* Light gray for headers when printing */
+            font-weight: bold;
+        }
+
+        td {
+            background: #fff;
+        }
+
+        .section {
+            margin-bottom: 15pt;
+            page-break-inside: avoid; /* Prevent sections from splitting across pages */
+        }
+
+        .section-title {
+            font-size: 14pt;
+            margin-bottom: 10pt;
+            color: #000;
+        }
+
+        .sub-section {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15pt;
+            gap: 10pt;
+            page-break-inside: avoid;
+        }
+
+        .box {
+            border: 1px solid #000;
+            padding: 10pt;
+            text-align: center;
+            flex: 1;
+            margin: 0 5pt;
+        }
+
+        .box-label {
+            font-size: 10pt;
+            margin-bottom: 8pt;
+        }
+
+        .box-value {
+            font-size: 12pt;
+            min-height: 40pt; /* Increased space for writing */
+        }
+
+        .skills-table td:first-child {
+            text-align: left;
+            padding-left: 15pt;
+        }
+
+        .notes-section {
+            min-height: 200pt; /* Plenty of space for writing */
+            border: 1px solid #000;
+            padding: 10pt;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 15pt;
+            font-size: 9pt;
+            color: #000;
+            page-break-before: always; /* Ensure footer starts on a new page if needed */
+        }
+
+        .checkbox {
+            display: inline-block;
+            width: 14pt;
+            height: 14pt;
+            border: 1px solid #000;
+            border-radius: 3pt;
+            margin: 0 4pt;
+        }
+
+        .empty-cell {
+            min-height: 40pt; /* Increased space for writing */
+            padding: 10pt;
+        }
+
+        /* Ensure proper page breaks */
+        .page-break {
+            page-break-before: always;
+        }
+
+        @media print {
+            body {
+                background: none;
+                padding: 0;
+            }
+
+            .character-sheet {
+                background: none;
+                border: none;
+                padding: 0;
+                color: #000;
+            }
+
+            h1, .section-title, .box-label, th {
+                color: #000;
+            }
+
+            td, .box, .notes-section {
+                background: none;
+                border: 1px solid #000;
+            }
+
+            .footer {
+                color: #000;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="character-sheet">
+        <!-- Page 1 -->
+        <!-- Character Basics -->
+        <div class="section">
+            <h1>World Where I Am Unwelcome: Character Sheet</h1>
+            <div class="section-title">Character Basics</div>
+            <table>
+                <tr>
+                    <th>Character Name</th>
+                    <th>Class & Level</th>
+                    <th>Background</th>
+                    <th>Player Name</th>
+                </tr>
+                <tr>
+                    <td class="empty-cell"></td>
+                    <td class="empty-cell"></td>
+                    <td class="empty-cell"></td>
+                    <td class="empty-cell"></td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <th>Race</th>
+                    <th>Alignment</th>
+                    <th>Experience Points</th>
+                </tr>
+                <tr>
+                    <td class="empty-cell"></td>
+                    <td class="empty-cell"></td>
+                    <td class="empty-cell"></td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Ability Scores and Saving Throws -->
+        <div class="section">
+            <div class="sub-section">
+                <!-- Ability Scores -->
+                <div style="flex: 2;">
+                    <div class="section-title">Ability Scores</div>
+                    <table>
+                        <tr>
+                            <th>Ability</th>
+                            <th>Score</th>
+                            <th>Modifier</th>
+                        </tr>
+                        <tr>
+                            <td>Strength <!-- Icon: Sword --> </td>
+                            <td class="empty-cell"></td>
+                            <td class="empty-cell"></td>
+                        </tr>
+                        <tr>
+                            <td>Dexterity <!-- Icon: Bow --> </td>
+                            <td class="empty-cell"></td>
+                            <td class="empty-cell"></td>
+                        </tr>
+                        <tr>
+                            <td>Constitution <!-- Icon: Shield --> </td>
+                            <td class="empty-cell"></td>
+                            <td class="empty-cell"></td>
+                        </tr>
+                        <tr>
+                            <td>Intelligence <!-- Icon: Book --> </td>
+                            <td class="empty-cell"></td>
+                            <td class="empty-cell"></td>
+                        </tr>
+                        <tr>
+                            <td>Wisdom <!-- Icon: Eye --> </td>
+                            <td class="empty-cell"></td>
+                            <td class="empty-cell"></td>
+                        </tr>
+                        <tr>
+                            <td>Charisma <!-- Icon: Speech Bubble --> </td>
+                            <td class="empty-cell"></td>
+                            <td class="empty-cell"></td>
+                        </tr>
+                    </table>
+                </div>
+
+                <!-- Saving Throws -->
+                <div style="flex: 1.5;">
+                    <div class="section-title">Saving Throws</div>
+                    <table>
+                        <tr>
+                            <th>Save</th>
+                            <th>Modifier</th>
+                            <th>Proficient</th>
+                        </tr>
+                        <tr>
+                            <td>Strength <!-- Icon: Sword --> </td>
+                            <td class="empty-cell"></td>
+                            <td><span class="checkbox"></span> <!-- Icon: Checkmark if proficient --></td>
+                        </tr>
+                        <tr>
+                            <td>Dexterity <!-- Icon: Bow --> </td>
+                            <td class="empty-cell"></td>
+                            <td><span class="checkbox"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Constitution <!-- Icon: Shield --> </td>
+                            <td class="empty-cell"></td>
+                            <td><span class="checkbox"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Intelligence <!-- Icon: Book --> </td>
+                            <td class="empty-cell"></td>
+                            <td><span class="checkbox"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Wisdom <!-- Icon: Eye --> </td>
+                            <td class="empty-cell"></td>
+                            <td><span class="checkbox"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Charisma <!-- Icon: Speech Bubble --> </td>
+                            <td class="empty-cell"></td>
+                            <td><span class="checkbox"></span></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Special Mechanics -->
+        <div class="section">
+            <div class="section-title">Special Mechanics</div>
+            <div class="sub-section">
+                <div class="box">
+                    <div class="box-label">Forsaken Points (Max 3)</div>
+                    <div class="box-value">
+                        <span class="checkbox"></span>
+                        <span class="checkbox"></span>
+                        <span class="checkbox"></span>
+                        <!-- Icon: Star for each point -->
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="box-label">Corruption Points (Max 5)</div>
+                    <div class="box-value">
+                        <span class="checkbox"></span>
+                        <span class="checkbox"></span>
+                        <span class="checkbox"></span>
+                        <span class="checkbox"></span>
+                        <span class="checkbox"></span>
+                        <!-- Icon: Skull for each point -->
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="box-label">Mark of the Forsaken</div>
+                    <div class="box-value">Advantage vs Fear<br>Disadvantage on Persuasion vs Light’s Faithful<br>Commune 1/Long Rest (Religion DC 15)</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page 2 -->
+        <div class="page-break"></div>
+
+        <!-- Skills -->
+        <div class="section">
+            <div class="section-title">Skills</div>
+            <table class="skills-table">
+                <tr>
+                    <th>Skill</th>
+                    <th>Modifier</th>
+                    <th>Proficient</th>
+                    <th>Skill</th>
+                    <th>Modifier</th>
+                    <th>Proficient</th>
+                </tr>
+                <tr>
+                    <td>Acrobatics (Dex) <!-- Icon: Acrobat --> </td>
+                    <td class="empty-cell"></td>
+                    <td><span class="checkbox"></span></td>
+                    <td>Medicine (Wis) <!-- Icon: Herb --> </td>
+                    <td class="empty-cell"></td>
+                    <td><span class="checkbox"></span></td>
+                </tr>
+                <tr>
+                    <td>Animal Handling (Wis) <!-- Icon: Paw --> </td>
+                    <td class="empty-cell"></td>
+                    <td><span class="checkbox"></span></td>
+                    <td>Nature (Int) <!-- Icon: Leaf --> </td>
+                    <td class="empty-cell"></td>
+                    <td><span class="checkbox"></span></td>
+                </tr>
+                <tr>
+                    <td>Arcana (Int) <!-- Icon: Magic Wand --> </td>
+                    <td class="empty-cell"></td>
+                    <td><span class="checkbox"></span></td>
+                    <td>Perception (Wis) <!-- Icon: Eye --> </td>
+                    <td class="empty-cell"></td>
+                    <td><span class="checkbox"></span></td>
+                </tr>
+                <tr>
+                    <td>Athletics (Str) <!-- Icon: Muscle --> </td>
+                    <td class="empty-cell"></td>
+                    <td><span class="checkbox"></span></td>
+                    <td>Performance (Cha) <!-- Icon: Mask --> </td>
+                    <td class="empty-cell"></td>
+                    <td><span class="checkbox"></span></td>
+                </tr>
+                <tr>
+                    <td>Deception (Cha) <!-- Icon: Mask --> </td>
+                    <td class="empty-cell"></td>
+                    <td><span class="checkbox"></span></td>
+                    <td>Persuasion (Cha) <!-- Icon: Speech Bubble --> </td>
+                    <td class="empty-cell"></td>
+                    <td><span class="checkbox"></span></td>
+                </tr>
+                <tr>
+                    <td>History (Int) <!-- Icon: Scroll --> </td>
+                    <td class="empty-cell"></td>
+                    <td><span class="checkbox"></span></td>
+                    <td>Religion (Int) <!-- Icon: Cross --> </td>
+                    <td class="empty-cell"></td>
+                    <td><span class="checkbox"></span></td>
+                </tr>
+                <tr>
+                    <td>Insight (Wis) <!-- Icon: Light Bulb --> </td>
+                    <td class="empty-cell"></td>
+                    <td><span class="checkbox"></span></td>
+                    <td>Sleight of Hand (Dex) <!-- Icon: Hand --> </td>
+                    <td class="empty-cell"></td>
+                    <td><span class="checkbox"></span></td>
+                </tr>
+                <tr>
+                    <td>Intimidation (Cha) <!-- Icon: Fist --> </td>
+                    <td class="empty-cell"></td>
+                    <td><span class="checkbox"></span></td>
+                    <td>Stealth (Dex) <!-- Icon: Cloak --> </td>
+                    <td class="empty-cell"></td>
+                    <td><span class="checkbox"></span></td>
+                </tr>
+                <tr>
+                    <td>Investigation (Int) <!-- Icon: Magnifying Glass --> </td>
+                    <td class="empty-cell"></td>
+                    <td><span class="checkbox"></span></td>
+                    <td>Survival (Wis) <!-- Icon: Compass --> </td>
+                    <td class="empty-cell"></td>
+                    <td><span class="checkbox"></span></td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Combat Stats -->
+        <div class="section">
+            <div class="section-title">Combat Stats</div>
+            <div class="sub-section">
+                <div class="box">
+                    <div class="box-label">Armor Class <!-- Icon: Shield --> </div>
+                    <div class="box-value"></div>
+                </div>
+                <div class="box">
+                    <div class="box-label">Initiative <!-- Icon: Lightning Bolt --> </div>
+                    <div class="box-value"></div>
+                </div>
+                <div class="box">
+                    <div class="box-label">Speed <!-- Icon: Boot --> </div>
+                    <div class="box-value"></div>
+                </div>
+                <div class="box">
+                    <div class="box-label">Hit Points (Max) <!-- Icon: Heart --> </div>
+                    <div class="box-value"></div>
+                </div>
+                <div class="box">
+                    <div class="box-label">Current HP</div>
+                    <div class="box-value"></div>
+                </div>
+                <div class="box">
+                    <div class="box-label">Temporary HP</div>
+                    <div class="box-value"></div>
+                </div>
+            </div>
+
+            <table>
+                <tr>
+                    <th>Attack</th>
+                    <th>Bonus</th>
+                    <th>Damage/Type</th>
+                </tr>
+                <tr>
+                    <td class="empty-cell"> <!-- Icon: Sword or Wand --> </td>
+                    <td class="empty-cell"></td>
+                    <td class="empty-cell"></td>
+                </tr>
+                <tr>
+                    <td class="empty-cell"></td>
+                    <td class="empty-cell"></td>
+                    <td class="empty-cell"></td>
+                </tr>
+                <tr>
+                    <td class="empty-cell"></td>
+                    <td class="empty-cell"></td>
+                    <td class="empty-cell"></td>
+                </tr>
+                <tr>
+                    <td class="empty-cell"></td>
+                    <td class="empty-cell"></td>
+                    <td class="empty-cell"></td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Page 3 -->
+        <div class="page-break"></div>
+
+        <!-- Features, Traits, and Spells -->
+        <div class="section">
+            <div class="sub-section">
+                <div style="flex: 1;">
+                    <div class="section-title">Features & Traits</div>
+                    <div class="notes-section"></div>
+                </div>
+                <div style="flex: 1;">
+                    <div class="section-title">Spells</div>
+                    <table>
+                        <tr>
+                            <th>Level</th>
+                            <th>Spell Name</th>
+                            <th>Slots</th>
+                        </tr>
+                        <tr>
+                            <td>Cantrip</td>
+                            <td class="empty-cell"></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>Cantrip</td>
+                            <td class="empty-cell"></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>1st</td>
+                            <td class="empty-cell"></td>
+                            <td>
+                                <span class="checkbox"></span>
+                                <span class="checkbox"></span>
+                                <span class="checkbox"></span>
+                                <span class="checkbox"></span>
+                                <!-- Icon: Checkmark for slots -->
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>1st</td>
+                            <td class="empty-cell"></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>2nd</td>
+                            <td class="empty-cell"></td>
+                            <td>
+                                <span class="checkbox"></span>
+                                <span class="checkbox"></span>
+                                <span class="checkbox"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2nd</td>
+                            <td class="empty-cell"></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>3rd</td>
+                            <td class="empty-cell"></td>
+                            <td>
+                                <span class="checkbox"></span>
+                                <span class="checkbox"></span>
+                                <td class="empty-cell"></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>4th</td>
+                            <td class="empty-cell"></td>
+                            <td>
+                                <span class="checkbox"></span>
+                                <span class="checkbox"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>4th</td>
+                            <td class="empty-cell"></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>5th</td>
+                            <td class="empty-cell"></td>
+                            <td>
+                                <span class="checkbox"></span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Equipment and Inventory -->
+        <div class="section">
+            <div class="section-title">Equipment & Inventory</div>
+            <div class="sub-section">
+                <div style="flex: 1;">
+                    <div class="box">
+                        <div class="box-label">Gold Pieces <!-- Icon: Coin --> </div>
+                        <div class="box-value"></div>
+                    </div>
+                    <div class="box">
+                        <div class="box-label">Silver Pieces <!-- Icon: Coin --> </div>
+                        <div class="box-value"></div>
+                    </div>
+                    <div class="box">
+                        <div class="box-label">Copper Pieces <!-- Icon: Coin --> </div>
+                        <div class="box-value"></div>
+                    </div>
+                </div>
+                <div style="flex: 2;">
+                    <div class="notes-section"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notes -->
+        <div class="section">
+            <div class="section-title">Notes</div>
+            <div class="notes-section"></div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            Forged by the Outcasts of Ksavir in the Age of Shadows - Fight for Vengeance
+        </div>
+    </div>
+</body>
+</html>

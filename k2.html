@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Where I Am Unwelcome - Editable Character Sheet</title>
+    <style>
+        body {
+            background-color: #1a1a1a;
+            color: #d4c4a1;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #ffd700;
+            text-shadow: 2px 2px 4px #000;
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .character-sheet {
+            width: 90%;
+            max-width: 1200px;
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid #4a3c2b;
+            border-radius: 8px;
+            padding: 25px;
+            color: #d4c4a1;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #4a3c2b;
+            text-align: center;
+        }
+
+        th {
+            background: #4a3c2b;
+            color: #ffd700;
+            font-weight: bold;
+        }
+
+        td {
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            color: #ffd700;
+            font-size: 1.6em;
+            text-shadow: 1px 1px 2px #000;
+            margin-bottom: 15px;
+        }
+
+        .sub-section {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            gap: 15px;
+        }
+
+        .box {
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid #4a3c2b;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            flex: 1;
+            margin: 0 5px;
+        }
+
+        .box-label {
+            color: #ffd700;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+
+        .box-value {
+            font-size: 16px;
+            color: #d4c4a1;
+            min-height: 40px;
+        }
+
+        .skills-table td:first-child {
+            text-align: left;
+            padding-left: 15px;
+        }
+
+        .notes-section {
+            min-height: 200px;
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid #4a3c2b;
+            padding: 15px;
+            border-radius: 5px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 25px;
+            font-size: 0.9em;
+            color: #d4c4a1;
+            text-shadow: 1px 1px 2px #000;
+        }
+
+        input[type="text"], input[type="number"], textarea {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid #4a3c2b;
+            color: #d4c4a1;
+            padding: 8px;
+            border-radius: 4px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+
+        input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            margin: 0 5px;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 200px;
+        }
+
+        input[type="text"]::placeholder, textarea::placeholder {
+            color: #a89b7d;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            table, .box-label, .box-value {
+                font-size: 12px;
+            }
+
+            .sub-section {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .box {
+                margin: 5px 0;
+            }
+
+            .character-sheet {
+                padding: 15px;
+            }
+
+            input[type="text"], input[type="number"], textarea {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>World Where I Am Unwelcome: Character Sheet</h1>
+
+    <div class="character-sheet">
+        <!-- Character Basics -->
+        <div class="section">
+            <div class="section-title">Character Basics</div>
+            <table>
+                <tr>
+                    <th>Character Name</th>
+                    <th>Class & Level</th>
+                    <th>Background</th>
+                    <th>Player Name</th>
+                    <th>Race</th>
+                    <th>Alignment</th>
+                    <th>Experience Points</th>
+                </tr>
+                <tr>
+                    <td><input type="text" placeholder="Character Name"></td>
+                    <td><input type="text" placeholder="Class & Level"></td>
+                    <td><input type="text" placeholder="Background"></td>
+                    <td><input type="text" placeholder="Player Name"></td>
+                    <td><input type="text" placeholder="Race"></td>
+                    <td><input type="text" placeholder="Alignment"></td>
+                    <td><input type="text" placeholder="Experience Points"></td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Ability Scores, Saving Throws, and Special Mechanics -->
+        <div class="section">
+            <div class="sub-section">
+                <!-- Ability Scores -->
+                <div style="flex: 2;">
+                    <div class="section-title">Ability Scores</div>
+                    <table>
+                        <tr>
+                            <th>Ability</th>
+                            <th>Score</th>
+                            <th>Modifier</th>
+                        </tr>
+                        <tr>
+                            <td>Strength <!-- Icon: Sword --> </td>
+                            <td><input type="number" placeholder="Score"></td>
+                            <td><input type="text" placeholder="Modifier"></td>
+                        </tr>
+                        <tr>
+                            <td>Dexterity <!-- Icon: Bow --> </td>
+                            <td><input type="number" placeholder="Score"></td>
+                            <td><input type="text" placeholder="Modifier"></td>
+                        </tr>
+                        <tr>
+                            <td>Constitution <!-- Icon: Shield --> </td>
+                            <td><input type="number" placeholder="Score"></td>
+                            <td><input type="text" placeholder="Modifier"></td>
+                        </tr>
+                        <tr>
+                            <td>Intelligence <!-- Icon: Book --> </td>
+                            <td><input type="number" placeholder="Score"></td>
+                            <td><input type="text" placeholder="Modifier"></td>
+                        </tr>
+                        <tr>
+                            <td>Wisdom <!-- Icon: Eye --> </td>
+                            <td><input type="number" placeholder="Score"></td>
+                            <td><input type="text" placeholder="Modifier"></td>
+                        </tr>
+                        <tr>
+                            <td>Charisma <!-- Icon: Speech Bubble --> </td>
+                            <td><input type="number" placeholder="Score"></td>
+                            <td><input type="text" placeholder="Modifier"></td>
+                        </tr>
+                    </table>
+                </div>
+
+                <!-- Saving Throws -->
+                <div style="flex: 1.5;">
+                    <div class="section-title">Saving Throws</div>
+                    <table>
+                        <tr>
+                            <th>Save</th>
+                            <th>Modifier</th>
+                            <th>Proficient</th>
+                        </tr>
+                        <tr>
+                            <td>Strength <!-- Icon: Sword --> </td>
+                            <td><input type="text" placeholder="Modifier"></td>
+                            <td><input type="checkbox"></td>
+                        </tr>
+                        <tr>
+                            <td>Dexterity <!-- Icon: Bow --> </td>
+                            <td><input type="text" placeholder="Modifier"></td>
+                            <td><input type="checkbox"></td>
+                        </tr>
+                        <tr>
+                            <td>Constitution <!-- Icon: Shield --> </td>
+                            <td><input type="text" placeholder="Modifier"></td>
+                            <td><input type="checkbox"></td>
+                        </tr>
+                        <tr>
+                            <td>Intelligence <!-- Icon: Book --> </td>
+                            <td><input type="text" placeholder="Modifier"></td>
+                            <td><input type="checkbox"></td>
+                        </tr>
+                        <tr>
+                            <td>Wisdom <!-- Icon: Eye --> </td>
+                            <td><input type="text" placeholder="Modifier"></td>
+                            <td><input type="checkbox"></td>
+                        </tr>
+                        <tr>
+                            <td>Charisma <!-- Icon: Speech Bubble --> </td>
+                            <td><input type="text" placeholder="Modifier"></td>
+                            <td><input type="checkbox"></td>
+                        </tr>
+                    </table>
+                </div>
+
+                <!-- Special Mechanics -->
+                <div style="flex: 1.5;">
+                    <div class="section-title">Special Mechanics</div>
+                    <div class="box">
+                        <div class="box-label">Forsaken Points (Max 3)</div>
+                        <div class="box-value">
+                            <input type="checkbox">
+                            <input type="checkbox">
+                            <input type="checkbox">
+                            <!-- Icon: Star for each point -->
+                        </div>
+                    </div>
+                    <div class="box">
+                        <div class="box-label">Corruption Points (Max 5)</div>
+                        <div class="box-value">
+                            <input type="checkbox">
+                            <input type="checkbox">
+                            <input type="checkbox">
+                            <input type="checkbox">
+                            <input type="checkbox">
+                            <!-- Icon: Skull for each point -->
+                        </div>
+                    </div>
+                    <div class="box">
+                        <div class="box-label">Mark of the Forsaken</div>
+                        <div class="box-value">Advantage vs Fear<br>Disadvantage on Persuasion vs Light’s Faithful<br>Commune 1/Long Rest (Religion DC 15)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Skills -->
+        <div class="section">
+            <div class="section-title">Skills</div>
+            <table class="skills-table">
+                <tr>
+                    <th>Skill</th>
+                    <th>Modifier</th>
+                    <th>Proficient</th>
+                    <th>Skill</th>
+                    <th>Modifier</th>
+                    <th>Proficient</th>
+                </tr>
+                <tr>
+                    <td>Acrobatics (Dex) <!-- Icon: Acrobat --> </td>
+                    <td><input type="text" placeholder="Modifier"></td>
+                    <td><input type="checkbox"></td>
+                    <td>Medicine (Wis) <!-- Icon: Herb --> </td>
+                    <td><input type="text" placeholder="Modifier"></td>
+                    <td><input type="checkbox"></td>
+                </tr>
+                <tr>
+                    <td>Animal Handling (Wis) <!-- Icon: Paw --> </td>
+                    <td><input type="text" placeholder="Modifier"></td>
+                    <td><input type="checkbox"></td>
+                    <td>Nature (Int) <!-- Icon: Leaf --> </td>
+                    <td><input type="text" placeholder="Modifier"></td>
+                    <td><input type="checkbox"></td>
+                </tr>
+                <tr>
+                    <td>Arcana (Int) <!-- Icon: Magic Wand --> </td>
+                    <td><input type="text" placeholder="Modifier"></td>
+                    <td><input type="checkbox"></td>
+                    <td>Perception (Wis) <!-- Icon: Eye --> </td>
+                    <td><input type="text" placeholder="Modifier"></td>
+                    <td><input type="checkbox"></td>
+                </tr>
+                <tr>
+                    <td>Athletics (Str) <!-- Icon: Muscle --> </td>
+                    <td><input type="text" placeholder="Modifier"></td>
+                    <td><input type="checkbox"></td>
+                    <td>Performance (Cha) <!-- Icon: Mask --> </td>
+                    <td><input type="text" placeholder="Modifier"></td>
+                    <td><input type="checkbox"></td>
+                </tr>
+                <tr>
+                    <td>Deception (Cha) <!-- Icon: Mask --> </td>
+                    <td><input type="text" placeholder="Modifier"></td>
+                    <td><input type="checkbox"></td>
+                    <td>Persuasion (Cha) <!-- Icon: Speech Bubble --> </td>
+                    <td><input type="text" placeholder="Modifier"></td>
+                    <td><input type="checkbox"></td>
+                </tr>
+                <tr>
+                    <td>History (Int) <!-- Icon: Scroll --> </td>
+                    <td><input type="text" placeholder="Modifier"></td>
+                    <td><input type="checkbox"></td>
+                    <td>Religion (Int) <!-- Icon: Cross --> </td>
+                    <td><input type="text" placeholder="Modifier"></td>
+                    <td><input type="checkbox"></td>
+                </tr>
+                <tr>
+                    <td>Insight (Wis) <!-- Icon: Light Bulb --> </td>
+                    <td><input type="text" placeholder="Modifier"></td>
+                    <td><input type="checkbox"></td>
+                    <td>Sleight of Hand (Dex) <!-- Icon: Hand --> </td>
+                    <td><input type="text" placeholder="Modifier"></td>
+                    <td><input type="checkbox"></td>
+                </tr>
+                <tr>
+                    <td>Intimidation (Cha) <!-- Icon: Fist --> </td>
+                    <td><input type="text" placeholder="Modifier"></td>
+                    <td><input type="checkbox"></td>
+                    <td>Stealth (Dex) <!-- Icon: Cloak --> </td>
+                    <td><input type="text" placeholder="Modifier"></td>
+                    <td><input type="checkbox"></td>
+                </tr>
+                <tr>
+                    <td>Investigation (Int) <!-- Icon: Magnifying Glass --> </td>
+                    <td><input type="text" placeholder="Modifier"></td>
+                    <td><input type="checkbox"></td>
+                    <td>Survival (Wis) <!-- Icon: Compass --> </td>
+                    <td><input type="text" placeholder="Modifier"></td>
+                    <td><input type="checkbox"></td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Combat Stats -->
+        <div class="section">
+            <div class="section-title">Combat Stats</div>
+            <div class="sub-section">
+                <div class="box">
+                    <div class="box-label">Armor Class <!-- Icon: Shield --> </div>
+                    <div class="box-value"><input type="text" placeholder="Armor Class"></div>
+                </div>
+                <div class="box">
+                    <div class="box-label">Initiative <!-- Icon: Lightning Bolt --> </div>
+                    <div class="box-value"><input type="text" placeholder="Initiative"></div>
+                </div>
+                <div class="box">
+                    <div class="box-label">Speed <!-- Icon: Boot --> </div>
+                    <div class="box-value"><input type="text" placeholder="Speed"></div>
+                </div>
+                <div class="box">
+                    <div class="box-label">Hit Points (Max) <!-- Icon: Heart --> </div>
+                    <div class="box-value"><input type="text" placeholder="Max HP"></div>
+                </div>
+                <div class="box">
+                    <div class="box-label">Current HP</div>
+                    <div class="box-value"><input type="text" placeholder="Current HP"></div>
+                </div>
+                <div class="box">
+                    <div class="box-label">Temporary HP</div>
+                    <div class="box-value"><input type="text" placeholder="Temporary HP"></div>
+                </div>
+            </div>
+
+            <table>
+                <tr>
+                    <th>Attack</th>
+                    <th>Bonus</th>
+                    <th>Damage/Type</th>
+                </tr>
+                <tr>
+                    <td><input type="text" placeholder="Attack"> <!-- Icon: Sword or Wand --> </td>
+                    <td><input type="text" placeholder="Bonus"></td>
+                    <td><input type="text" placeholder="Damage/Type"></td>
+                </tr>
+                <tr>
+                    <td><input type="text" placeholder="Attack"></td>
+                    <td><input type="text" placeholder="Bonus"></td>
+                    <td><input type="text" placeholder="Damage/Type"></td>
+                </tr>
+                <tr>
+                    <td><input type="text" placeholder="Attack"></td>
+                    <td><input type="text" placeholder="Bonus"></td>
+                    <td><input type="text" placeholder="Damage/Type"></td>
+                </tr>
+                <tr>
+                    <td><input type="text" placeholder="Attack"></td>
+                    <td><input type="text" placeholder="Bonus"></td>
+                    <td><input type="text" placeholder="Damage/Type"></td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Features, Traits, and Spells -->
+        <div class="section">
+            <div class="sub-section">
+                <div style="flex: 1;">
+                    <div class="section-title">Features & Traits</div>
+                    <div class="notes-section">
+                        <textarea placeholder="List Class Features, Racial Traits, Background Features, etc."></textarea>
+                    </div>
+                </div>
+                <div style="flex: 1;">
+                    <div class="section-title">Spells</div>
+                    <table>
+                        <tr>
+                            <th>Level</th>
+                            <th>Spell Name</th>
+                            <th>Slots</th>
+                        </tr>
+                        <tr>
+                            <td>Cantrip</td>
+                            <td><input type="text" placeholder="Spell Name"></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>Cantrip</td>
+                            <td><input type="text" placeholder="Spell Name"></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>1st</td>
+                            <td><input type="text" placeholder="Spell Name"></td>
+                            <td>
+                                <input type="checkbox">
+                                <input type="checkbox">
+                                <input type="checkbox">
+                                <input type="checkbox">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>1st</td>
+                            <td><input type="text" placeholder="Spell Name"></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>2nd</td>
+                            <td><input type="text" placeholder="Spell Name"></td>
+                            <td>
+                                <input type="checkbox">
+                                <input type="checkbox">
+                                <input type="checkbox">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2nd</td>
+                            <td><input type="text" placeholder="Spell Name"></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>3rd</td>
+                            <td><input type="text" placeholder="Spell Name"></td>
+                            <td>
+                                <input type="checkbox">
+                                <input type="checkbox">
+                                <input type="checkbox">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3rd</td>
+                            <td><input type="text" placeholder="Spell Name"></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>4th</td>
+                            <td><input type="text" placeholder="Spell Name"></td>
+                            <td>
+                                <input type="checkbox">
+                                <input type="checkbox">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>4th</td>
+                            <td><input type="text" placeholder="Spell Name"></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>5th</td>
+                            <td><input type="text" placeholder="Spell Name"></td>
+                            <td>
+                                <input type="checkbox">
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Equipment and Inventory -->
+        <div class="section">
+            <div class="section-title">Equipment & Inventory</div>
+            <div class="sub-section">
+                <div style="flex: 1;">
+                    <div class="box">
+                        <div class="box-label">Gold Pieces <!-- Icon: Coin --> </div>
+                        <div class="box-value"><input type="text" placeholder="Gold Pieces"></div>
+                    </div>
+                    <div class="box">
+                        <div class="box-label">Silver Pieces <!-- Icon: Coin --> </div>
+                        <div class="box-value"><input type="text" placeholder="Silver Pieces"></div>
+                    </div>
+                    <div class="box">
+                        <div class="box-label">Copper Pieces <!-- Icon: Coin --> </div>
+                        <div class="box-value"><input type="text" placeholder="Copper Pieces"></div>
+                    </div>
+                </div>
+                <div style="flex: 2;">
+                    <div class="notes-section">
+                        <textarea placeholder="List Equipment: Weapons, Armor, Magic Items, Adventuring Gear, etc."></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notes -->
+        <div class="section">
+            <div class="section-title">Notes</div>
+            <div class="notes-section">
+                <textarea placeholder="Allies, Enemies, Backstory Details, Campaign Notes, etc."></textarea>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        Forged by the Outcasts of Ksavir in the Age of Shadows - Fight for Vengeance
+    </div>
+</body>
+</html>

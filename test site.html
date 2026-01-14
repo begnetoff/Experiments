@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>VS Code — Quiz with Explanations</title>
+  <meta name="description" content="Interactive Visual Studio Code quiz. If you pick a wrong answer, an info icon appears with a full explanation for learning.">
+  <style>
+    :root{--bg:#0f1222;--panel:#141a33;--muted:#9fb0d6;--text:#f1f5ff;--accent:#7bb3ff;--ok:#38d39f;--warn:#ffcc66;--err:#ff6b6b}
+    *{box-sizing:border-box}
+    body{margin:0;background:linear-gradient(180deg,#0b1020,#0f1222);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto}
+    a{color:var(--accent)}
+    header{position:sticky;top:0;background:#0b1020cc;backdrop-filter:blur(8px);border-bottom:1px solid #1f2947}
+    .hdr{max-width:980px;margin:0 auto;padding:14px 18px;display:flex;gap:12px;align-items:center}
+    .badge{font-size:12px;border:1px solid #2a3c66;border-radius:999px;padding:2px 8px;color:#d9e6ff}
+    main{max-width:980px;margin:0 auto;padding:22px}
+    .card{background:var(--panel);border:1px solid #213054;border-radius:16px;box-shadow:0 12px 28px rgba(0,0,0,.35);margin:16px 0}
+    .card-h{padding:18px 20px;border-bottom:1px solid #213054}
+    .card-b{padding:18px 20px}
+    h1{margin:0;font-size:22px}
+    h2{margin:0 0 6px 0;font-size:18px}
+    .q{display:grid;gap:14px}
+    .opts{display:grid;gap:8px;margin-top:6px}
+    .opt{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border:1px solid #2a3c66;border-radius:12px;background:#0f1730;cursor:pointer}
+    .opt:hover{background:#0f1a37}
+    .opt input{margin-top:4px}
+    .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+    button{background:#1a2a55;color:var(--text);border:1px solid #2a3c66;border-radius:10px;padding:10px 14px;font-weight:600;cursor:pointer}
+    button:hover{background:#1c326e}
+    .correct{border-color:#2f8d6b;background:#0f2a22}
+    .wrong{border-color:#7a2f2f;background:#2a1010}
+    .explain{display:none;margin-top:10px;padding:10px 12px;border-radius:12px;border:1px solid #2a3c66;background:#0d1830}
+    .explain.show{display:flex;gap:10px}
+    .icon{width:22px;height:22px;flex:0 0 auto}
+    .result{font-weight:700}
+    .ok{color:var(--ok)}
+    .err{color:var(--err)}
+    .sep{height:1px;background:#213054;margin:16px 0}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="hdr">
+      <div class="badge">VS Code Quiz</div>
+      <div class="badge">Shows explanations on wrong answers</div>
+      <div style="margin-left:auto" class="badge">No libraries • Plain JS</div>
+    </div>
+  </header>
+
+  <main>
+    <div class="card">
+      <div class="card-h"><h1>Visual Studio Code — Knowledge Check</h1></div>
+      <div class="card-b">
+        <p>Answer the questions below. <strong>If you select a wrong option, an info icon will appear with a full explanation</strong> so you can learn immediately. You can change your selection any time before submitting. At the end you’ll see your final score.</p>
+        <div class="sep"></div>
+        <form id="quiz" class="q" aria-describedby="score"></form>
+        <div class="actions">
+          <button id="submit" type="button">Check results</button>
+          <button id="reset" type="button" title="Clear all answers and start over">Reset</button>
+          <div id="score" class="result" aria-live="polite" style="margin-left:auto"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Inline SVG icon used for explanations
+    const ICON_INFO = `<svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="#6ea8ff" stroke-width="2"/><path d="M12 7.5a1.25 1.25 0 1 0 0 2.5 1.25 1.25 0 0 0 0-2.5Zm-1 5.25h2v4.75h-2V12.75Z" fill="#6ea8ff"/></svg>`;
+
+    // Quiz dataset
+    const QUESTIONS = [
+      {
+        q: "Where should you download VS Code from?",
+        options: [
+          "Any third‑party mirror that looks trustworthy",
+          "The official website code.visualstudio.com",
+          "From a random GitHub repo",
+          "From your friend’s USB"
+        ],
+        answer: 1,
+        why: "Always download from the official website to avoid malware and ensure you get the latest verified build. See: https://code.visualstudio.com/"
+      },
+      {
+        q: "Which panel shows Terminal, Output, Problems, and Debug Console?",
+        options: ["Activity Bar","Panel","Side Bar","Editor Group"],
+        answer: 1,
+        why: "The bottom area is the Panel. It hosts Terminal, Output, Problems, and Debug Console."
+      },
+      {
+        q: "What does Ctrl+Shift+P open by default?",
+        options: ["Command Palette","Extensions view","Quick Open","Settings"],
+        answer: 0,
+        why: "Ctrl+Shift+P opens the Command Palette, where you can run any VS Code command by name."
+      },
+      {
+        q: "What’s the quickest way to open a file by name?",
+        options: ["Ctrl+P (Quick Open)","Ctrl+` (Toggle Terminal)","Ctrl+B (Toggle Side Bar)","Ctrl+F (Find)"],
+        answer: 0,
+        why: "Ctrl+P opens Quick Open so you can fuzzy‑search files by name instantly."
+      },
+      {
+        q: "What is a VS Code Workspace?",
+        options: [
+          "A temporary cache that resets on exit",
+          "A saved set of one or more folders and editor settings",
+          "A single file opened in the editor",
+          "A cloud backup of your code"
+        ],
+        answer: 1,
+        why: "A workspace can include multiple folders and specific settings saved to a .code-workspace file."
+      },
+      {
+        q: "Which is best for live previewing an HTML page locally?",
+        options: ["Python extension","Live Server extension","Debugger for Chrome","ESLint"],
+        answer: 1,
+        why: "The Live Server extension launches a local dev server and refreshes the browser on save."
+      },
+      {
+        q: "Where do you define custom keyboard shortcuts?",
+        options: ["settings.json","keybindings.json (Keyboard Shortcuts)","launch.json","package.json"],
+        answer: 1,
+        why: "Open Keyboard Shortcuts and edit keybindings.json to customize mappings."
+      },
+      {
+        q: "What file stores debug configurations?",
+        options: ["tasks.json","launch.json","keybindings.json","extensions.json"],
+        answer: 1,
+        why: "Debug configurations (environments, arguments, etc.) live in .vscode/launch.json."
+      },
+      {
+        q: "What does \"Format on Save\" do?",
+        options: [
+          "Automatically lints code on save",
+          "Automatically formats code according to your formatter settings",
+          "Automatically runs tests on save",
+          "Automatically commits to Git on save"
+        ],
+        answer: 1,
+        why: "When enabled, VS Code formats the file on save using the configured formatter (e.g., Prettier)."
+      },
+      {
+        q: "How do you stage and commit changes using built‑in Source Control?",
+        options: [
+          "Open the Run & Debug view",
+          "Use the Git tab in the Side Bar: stage changes, type a message, click Commit",
+          "Add files to a ZIP and upload",
+          "You cannot commit in VS Code"
+        ],
+        answer: 1,
+        why: "The Source Control view lets you stage files, write a commit message, and commit without leaving the editor."
+      }
+    ];
+
+    const quiz = document.getElementById('quiz');
+
+    // Render questions
+    QUESTIONS.forEach((item, idx)=>{
+      const field = document.createElement('fieldset');
+      field.className = 'card';
+      field.innerHTML = `
+        <div class="card-h"><h2>Q${idx+1}. ${item.q}</h2></div>
+        <div class="card-b">
+          <div class="opts">
+            ${item.options.map((opt,i)=>`
+              <label class="opt" data-q="${idx}" data-i="${i}">
+                <input type="radio" name="q${idx}" value="${i}" aria-describedby="exp-${idx}">
+                <div>${opt}</div>
+              </label>`).join('')}
+          </div>
+          <div id="exp-${idx}" class="explain" role="region" aria-live="polite" aria-label="Explanation">
+            ${ICON_INFO}
+            <div>
+              <strong>Explanation</strong>
+              <div class="why"></div>
+              <div class="links"></div>
+            </div>
+          </div>
+        </div>`;
+      quiz.appendChild(field);
+    });
+
+    // Option click logic — show explanation if wrong, hide if correct
+    quiz.addEventListener('change', (e)=>{
+      const input = e.target.closest('input[type="radio"]');
+      if(!input) return;
+      const label = input.closest('.opt');
+      const qIndex = +label.dataset.q;
+      const optIndex = +label.dataset.i;
+      const card = label.closest('.card');
+      const explain = card.querySelector('.explain');
+      const why = card.querySelector('.why');
+
+      // reset visual state for all options of this question
+      card.querySelectorAll('.opt').forEach(o=>o.classList.remove('correct','wrong'));
+
+      if(optIndex === QUESTIONS[qIndex].answer){
+        label.classList.add('correct');
+        explain.classList.remove('show');
+      } else {
+        label.classList.add('wrong');
+        why.textContent = QUESTIONS[qIndex].why;
+        explain.classList.add('show');
+      }
+    });
+
+    // Submit — compute score and show missing explanations for any still-wrong answers
+    document.getElementById('submit').addEventListener('click', ()=>{
+      let correct = 0;
+      QUESTIONS.forEach((q, idx)=>{
+        const card = quiz.children[idx];
+        const selected = card.querySelector('input[type="radio"]:checked');
+        const explain = card.querySelector('.explain');
+        const why = card.querySelector('.why');
+        if(!selected){
+          // no answer — treat as wrong and show explanation to encourage learning
+          why.textContent = q.why;
+          explain.classList.add('show');
+          card.querySelectorAll('.opt').forEach(o=>o.classList.remove('correct','wrong'));
+          return;
+        }
+        const val = +selected.value;
+        if(val === q.answer){
+          correct++;
+          explain.classList.remove('show');
+        } else {
+          why.textContent = q.why;
+          explain.classList.add('show');
+        }
+      });
+      const score = document.getElementById('score');
+      score.innerHTML = `Score: <span class="${correct===QUESTIONS.length? 'ok':'err'}">${correct}/${QUESTIONS.length}</span>`;
+    });
+
+    // Reset quiz
+    document.getElementById('reset').addEventListener('click', ()=>{
+      document.getElementById('score').textContent = '';
+      [...quiz.children].forEach(card=>{
+        card.querySelectorAll('input[type="radio"]').forEach(i=>{ i.checked = false; });
+        card.querySelectorAll('.opt').forEach(o=>o.classList.remove('correct','wrong'));
+        card.querySelector('.explain').classList.remove('show');
+      });
+      window.scrollTo({top:0,behavior:'smooth'});
+    });
+  </script>
+</body>
+</html>
