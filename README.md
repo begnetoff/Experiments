@@ -1,0 +1,1 @@
+Just websites and small projects I've been working on for a while now. Nothing particularly impressive. Just trying to learn something. Most of the websites work correctly, but some have some visual bugs.
